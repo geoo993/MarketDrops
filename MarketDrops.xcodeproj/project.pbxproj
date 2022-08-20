@@ -35,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C728DDB328B102FC00326C47 /* SwiftExamplesPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SwiftExamplesPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C79D739228B0DCCD004266CF /* MarketDrops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarketDrops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79D739528B0DCCD004266CF /* MarketDropsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDropsApp.swift; sourceTree = "<group>"; };
 		C79D739728B0DCCD004266CF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,12 +74,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C728DDB128B1025D00326C47 /* Playgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				C728DDB328B102FC00326C47 /* SwiftExamplesPlayground.playground */,
+			);
+			path = Playgrounds;
+			sourceTree = "<group>";
+		};
 		C79D738928B0DCCD004266CF = {
 			isa = PBXGroup;
 			children = (
 				C79D739428B0DCCD004266CF /* MarketDrops */,
 				C79D73A528B0DCCF004266CF /* MarketDropsTests */,
 				C79D73AF28B0DCCF004266CF /* MarketDropsUITests */,
+				C728DDB128B1025D00326C47 /* Playgrounds */,
 				C79D739328B0DCCD004266CF /* Products */,
 			);
 			sourceTree = "<group>";
