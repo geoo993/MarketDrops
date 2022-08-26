@@ -1,4 +1,5 @@
 import SwiftUI
+import MarketDropsRouting
 
 final class RootRouter {
     private let tabBarView: TabBarView
@@ -14,8 +15,6 @@ final class RootRouter {
                     return TabRouting(item: item, router: IpoCalendarRouter(viewModel: .init()))
                 case .favourites:
                     return TabRouting(item: item, router: FavouritesRouter())
-                case .profile:
-                    return TabRouting(item: item, router: ProfileRouter())
                 }
             }
         )

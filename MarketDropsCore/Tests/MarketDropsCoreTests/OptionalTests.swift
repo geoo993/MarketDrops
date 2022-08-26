@@ -2,7 +2,7 @@ import XCTest
 @testable import MarketDropsCore
 
 final class OptionalTests: XCTestCase {
-    func testIsNilOrEmpty() {
+    func test_isNilOrEmpty() {
         var value: String?
         XCTAssertTrue(value.isNilOrEmpty)
         
@@ -13,7 +13,7 @@ final class OptionalTests: XCTestCase {
         XCTAssertFalse(value.isNilOrEmpty)
     }
     
-    func testIsNilAndNotNil() {
+    func test_isNilAndNotNil() {
         var value: String?
         XCTAssertTrue(value.isNil)
         

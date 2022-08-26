@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import MarketDropsRouting
 
 struct TabRouting: Identifiable {
     var id = UUID()

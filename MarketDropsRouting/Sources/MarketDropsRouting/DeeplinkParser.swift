@@ -1,12 +1,12 @@
 import Foundation
 import MarketDropsCore
 
-struct DeeplinkParser {
-    var pathComponents: ArraySlice<Substring>
-    var queryItems: [String: String]
+public struct DeeplinkParser {
+    public var pathComponents: ArraySlice<Substring>
+    public var queryItems: [String: String]
 }
 
-extension DeeplinkParser {
+public extension DeeplinkParser {
     init(url: URL) {
         let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
         let queryItems = urlComponents?.queryItems ?? []

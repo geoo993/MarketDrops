@@ -25,20 +25,11 @@ public struct RouteData {
     }
 }
 
-extension RouteData {
-    init(deeplinkParser: DeeplinkParser) {
-        let routePath: RoutePath = {
-            switch deeplinkParser.pathComponents.first {
-            case "ipo":
-                return .ipoCalendar
-            case "favourites":
-                return .favourites
-            case "profile":
-                return .profile
-            default:
-                return .unsupported
-            }
-        }()
+public extension RouteData {
+    init?(deeplinkParser: DeeplinkParser) {
+        guard let routePath = RoutePath(deeplinkParser: deeplinkParser) else {
+            return nil
+        }
         self.init(path: routePath, parameters: deeplinkParser.queryItems)
     }
 }

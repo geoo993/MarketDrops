@@ -3,7 +3,6 @@ import SwiftUI
 enum TabItem: Hashable, CaseIterable {
     case ipos
     case favourites
-    case profile
 }
 
 extension TabItem {
@@ -13,8 +12,6 @@ extension TabItem {
             return "IPO's"
         case .favourites:
             return "Favourites"
-        case .profile:
-            return "Profile"
         }
     }
     
@@ -24,8 +21,6 @@ extension TabItem {
             return Image(systemName: "calendar.circle.fill")
         case .favourites:
             return Image(systemName: "heart.circle.fill")
-        case .profile:
-            return Image(systemName: "person.circle.fill")
         }
     }
 }
