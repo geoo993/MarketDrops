@@ -1,4 +1,5 @@
 import Foundation
+import MarketDropsCore
 
 struct DeeplinkParser {
     var pathComponents: ArraySlice<Substring>

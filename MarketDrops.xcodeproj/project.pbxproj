@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C723436628B9680500CC1979 /* Binding+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C723436528B9680500CC1979 /* Binding+Ext.swift */; };
+		C723436C28B96C1300CC1979 /* NavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = C723436A28B96C1200CC1979 /* NavigationLink.swift */; };
+		C723436E28B96C1A00CC1979 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C723436D28B96C1A00CC1979 /* Binding.swift */; };
 		C75C3C2C28B8E46E006C4DEB /* RoomOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75C3C2B28B8E46E006C4DEB /* RoomOne.swift */; };
 		C75C3C2F28B8E709006C4DEB /* RoomTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75C3C2E28B8E709006C4DEB /* RoomTwo.swift */; };
 		C75C3C3228B8E71E006C4DEB /* RoomThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75C3C3128B8E71E006C4DEB /* RoomThree.swift */; };
@@ -27,10 +28,9 @@
 		C7A9A18B28B81E2D00399F4C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9A18A28B81E2D00399F4C /* Router.swift */; };
 		C7A9A18D28B8203200399F4C /* DeeplinkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9A18C28B8203200399F4C /* DeeplinkParser.swift */; };
 		C7A9A18F28B8240100399F4C /* RoutePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9A18E28B8240100399F4C /* RoutePath.swift */; };
-		C7A9A19128B82E7100399F4C /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9A19028B82E7100399F4C /* Optional.swift */; };
 		C7C40FF628B549E000B6663E /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C40FF528B549E000B6663E /* Unwrap.swift */; };
 		C7C40FF828B549FE00B6663E /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C40FF728B549FE00B6663E /* RoundedCorner.swift */; };
-		C7C61ECD28B929920027880C /* NavigationLink+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C61ECC28B929920027880C /* NavigationLink+Ext.swift */; };
+		C7C8EF9228B96E6100EEBD84 /* MarketDropsCore in Frameworks */ = {isa = PBXBuildFile; productRef = C7C8EF9128B96E6100EEBD84 /* MarketDropsCore */; };
 		C7CFDAE028B24BC4005D8E61 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CFDADF28B24BC4005D8E61 /* TabBarView.swift */; };
 		C7CFDAE328B24C3A005D8E61 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CFDAE228B24C3A005D8E61 /* RootRouter.swift */; };
 		C7CFDAE728B2504F005D8E61 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CFDAE628B2504F005D8E61 /* TabBarViewModel.swift */; };
@@ -49,7 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C723436528B9680500CC1979 /* Binding+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Ext.swift"; sourceTree = "<group>"; };
+		C723436828B96B6F00CC1979 /* MarketDropsCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MarketDropsCore; sourceTree = "<group>"; };
+		C723436A28B96C1200CC1979 /* NavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLink.swift; sourceTree = "<group>"; };
+		C723436D28B96C1A00CC1979 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		C728DDB328B102FC00326C47 /* SwiftExamplesPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SwiftExamplesPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C75C3C2B28B8E46E006C4DEB /* RoomOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomOne.swift; sourceTree = "<group>"; };
 		C75C3C2E28B8E709006C4DEB /* RoomTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTwo.swift; sourceTree = "<group>"; };
@@ -72,10 +74,8 @@
 		C7A9A18A28B81E2D00399F4C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		C7A9A18C28B8203200399F4C /* DeeplinkParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParser.swift; sourceTree = "<group>"; };
 		C7A9A18E28B8240100399F4C /* RoutePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePath.swift; sourceTree = "<group>"; };
-		C7A9A19028B82E7100399F4C /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		C7C40FF528B549E000B6663E /* Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unwrap.swift; sourceTree = "<group>"; };
 		C7C40FF728B549FE00B6663E /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
-		C7C61ECC28B929920027880C /* NavigationLink+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Ext.swift"; sourceTree = "<group>"; };
 		C7CFDADF28B24BC4005D8E61 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		C7CFDAE228B24C3A005D8E61 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		C7CFDAE628B2504F005D8E61 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
@@ -88,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7C8EF9228B96E6100EEBD84 /* MarketDropsCore in Frameworks */,
 				C7A9A18528B7E73200399F4C /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,10 +139,12 @@
 		C79D738928B0DCCD004266CF = {
 			isa = PBXGroup;
 			children = (
+				C723436828B96B6F00CC1979 /* MarketDropsCore */,
 				C79D739428B0DCCD004266CF /* MarketDrops */,
 				C79D73A528B0DCCF004266CF /* MarketDropsTests */,
 				C728DDB128B1025D00326C47 /* Playgrounds */,
 				C79D739328B0DCCD004266CF /* Products */,
+				C7C8EF9028B96E6100EEBD84 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,7 +164,6 @@
 				C7CFDAE128B24C1A005D8E61 /* Navigation */,
 				C7CFDADE28B24B9D005D8E61 /* Views */,
 				C79D739528B0DCCD004266CF /* MarketDropsApp.swift */,
-				C7A9A19028B82E7100399F4C /* Optional.swift */,
 				C7CFDAE428B24D5C005D8E61 /* Resources */,
 				C79D739B28B0DCCF004266CF /* Preview Content */,
 			);
@@ -187,25 +189,24 @@
 		C7C40FF428B549CF00B6663E /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
-				C7C40FF528B549E000B6663E /* Unwrap.swift */,
+				C723436D28B96C1A00CC1979 /* Binding.swift */,
+				C723436A28B96C1200CC1979 /* NavigationLink.swift */,
 				C7C40FF728B549FE00B6663E /* RoundedCorner.swift */,
+				C7C40FF528B549E000B6663E /* Unwrap.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
-		C7C61ECB28B929830027880C /* Helpers */ = {
+		C7C8EF9028B96E6100EEBD84 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C7C61ECC28B929920027880C /* NavigationLink+Ext.swift */,
-				C723436528B9680500CC1979 /* Binding+Ext.swift */,
 			);
-			path = Helpers;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C7CFDADE28B24B9D005D8E61 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C7C61ECB28B929830027880C /* Helpers */,
 				C7C40FF428B549CF00B6663E /* Modifiers */,
 				C75C3C2B28B8E46E006C4DEB /* RoomOne.swift */,
 				C75C3C2E28B8E709006C4DEB /* RoomTwo.swift */,
@@ -262,6 +263,7 @@
 			name = MarketDrops;
 			packageProductDependencies = (
 				C7A9A18428B7E73200399F4C /* ComposableArchitecture */,
+				C7C8EF9128B96E6100EEBD84 /* MarketDropsCore */,
 			);
 			productName = MarketDrops;
 			productReference = C79D739228B0DCCD004266CF /* MarketDrops.app */;
@@ -358,14 +360,14 @@
 				C7C40FF828B549FE00B6663E /* RoundedCorner.swift in Sources */,
 				C75C3C3F28B8F446006C4DEB /* ProfileRouter.swift in Sources */,
 				C7C40FF628B549E000B6663E /* Unwrap.swift in Sources */,
+				C723436C28B96C1300CC1979 /* NavigationLink.swift in Sources */,
 				C75C3C4828B91576006C4DEB /* RoomFour.swift in Sources */,
 				C75C3C4628B9154F006C4DEB /* NewsFeedRouter.swift in Sources */,
 				C75C3C3928B8F420006C4DEB /* FavouritesRouter.swift in Sources */,
 				C75C3C3428B8E75C006C4DEB /* RouteData.swift in Sources */,
-				C723436628B9680500CC1979 /* Binding+Ext.swift in Sources */,
+				C723436E28B96C1A00CC1979 /* Binding.swift in Sources */,
 				C75C3C2F28B8E709006C4DEB /* RoomTwo.swift in Sources */,
 				C7A9A18D28B8203200399F4C /* DeeplinkParser.swift in Sources */,
-				C7C61ECD28B929920027880C /* NavigationLink+Ext.swift in Sources */,
 				C7CFDAE728B2504F005D8E61 /* TabBarViewModel.swift in Sources */,
 				C7CFDAE328B24C3A005D8E61 /* RootRouter.swift in Sources */,
 				C7A9A18B28B81E2D00399F4C /* Router.swift in Sources */,
@@ -374,7 +376,6 @@
 				C75C3C2C28B8E46E006C4DEB /* RoomOne.swift in Sources */,
 				C7CFDAE028B24BC4005D8E61 /* TabBarView.swift in Sources */,
 				C79D739628B0DCCD004266CF /* MarketDropsApp.swift in Sources */,
-				C7A9A19128B82E7100399F4C /* Optional.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,6 +674,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C7A9A18328B7E73200399F4C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		C7C8EF9128B96E6100EEBD84 /* MarketDropsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MarketDropsCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
