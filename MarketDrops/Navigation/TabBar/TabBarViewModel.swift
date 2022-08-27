@@ -3,11 +3,11 @@ import MarketDropsRouting
 
 final class TabBarViewModel: ObservableObject {
     @Published var selectedTab: TabItem
-    @ObservedObject var ipoCalendarViewModel: IpoCalendarViewModel
+    @Published var ipoCalendarViewModel: IpoCalendarViewModel
     
     init(
-        selectedTab: TabItem = .ipos,
-        ipoCalendarViewModel: IpoCalendarViewModel = .init()
+        selectedTab: TabItem,
+        ipoCalendarViewModel: IpoCalendarViewModel
     ) {
         self.selectedTab = selectedTab
         self.ipoCalendarViewModel = ipoCalendarViewModel

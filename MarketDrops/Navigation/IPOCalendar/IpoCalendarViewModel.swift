@@ -2,13 +2,13 @@ import SwiftUI
 import MarketDropsRouting
 
 final class IpoCalendarViewModel: ObservableObject {
-    @Published var route: RoutePath?
+    @Published var route: IpoRoutePath?
     
     func setNewsFeedNavigation(isActive: Bool) {
-        self.route = isActive ? .ipoCalendar(.newsFeed("")) : nil
+        self.route = isActive ? .newsFeed("") : nil
     }
     
     func navigate(to ipoRoutePath: IpoRoutePath?) {
-        self.route = .ipoCalendar(ipoRoutePath)
+        self.route = ipoRoutePath
     }
 }

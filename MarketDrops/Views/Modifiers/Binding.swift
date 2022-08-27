@@ -1,6 +1,5 @@
 import CasePaths
 import SwiftUI
-import MarketDropsCore
 
 extension Binding {
     func isPresent<Wrapped>() -> Binding<Bool>

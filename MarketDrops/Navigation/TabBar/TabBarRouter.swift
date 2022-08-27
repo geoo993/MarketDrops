@@ -1,18 +1,21 @@
 import SwiftUI
 import MarketDropsRouting
 
-final class RootRouter {
+final class TabBarRouter {
     private let tabBarView: TabBarView
     private let tabBarViewModel: TabBarViewModel
     
-    init(viewModel: TabBarViewModel = .init()) {
+    init(viewModel: TabBarViewModel) {
         self.tabBarViewModel = viewModel
         self.tabBarView = TabBarView(
             viewModel: viewModel,
             tabRoutings: TabItem.allCases.map { item -> TabRouting in
                 switch item {
                 case .ipos:
-                    return TabRouting(item: item, router: IpoCalendarRouter(viewModel: .init()))
+                    return TabRouting(
+                        item: item,
+                        router: IpoCalendarRouter(viewModel: viewModel.ipoCalendarViewModel)
+                    )
                 case .favourites:
                     return TabRouting(item: item, router: FavouritesRouter())
                 }
@@ -21,7 +24,7 @@ final class RootRouter {
     }
 }
 
-extension RootRouter: Router {
+extension TabBarRouter: Router {
     var contentView: AnyView {
         AnyView (
             tabBarView

@@ -40,14 +40,23 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C79D73AB28B0DCCF004266CF"
-               BuildableName = "MarketDropsUITests.xctest"
-               BlueprintName = "MarketDropsUITests"
-               ReferencedContainer = "container:MarketDrops.xcodeproj">
+               BlueprintIdentifier = "MarketDropsCoreTests"
+               BuildableName = "MarketDropsCoreTests"
+               BlueprintName = "MarketDropsCoreTests"
+               ReferencedContainer = "container:MarketDropsCore">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "MarketDropsRoutingTests"
+               BuildableName = "MarketDropsRoutingTests"
+               BlueprintName = "MarketDropsRoutingTests"
+               ReferencedContainer = "container:MarketDropsRouting">
             </BuildableReference>
          </TestableReference>
       </Testables>

@@ -26,7 +26,7 @@ struct NewsFeedNavigation: View {
     var body: some View {
         NavigationLink(
             unwrap: $viewModel.route,
-            case: /RoutePath.ipoCalendar,
+            case: /IpoRoutePath.newsFeed,
             onNavigate: self.viewModel.setNewsFeedNavigation(isActive:),
             destination: { _ in
                 NewsFeedRouter().contentView
