@@ -59,6 +59,16 @@
                ReferencedContainer = "container:MarketDropsRouting">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "MarketDropsAPIClientTests"
+               BuildableName = "MarketDropsAPIClientTests"
+               BlueprintName = "MarketDropsAPIClientTests"
+               ReferencedContainer = "container:MarketDropsAPIClient">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
