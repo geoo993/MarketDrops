@@ -98,7 +98,7 @@ extension MarketDropsAPIClient: URLRequestable {
         data: Data
     ) -> AnyPublisher<T, Error> {
         return Just(data)
-            .decode(type: T.self, decoder:  JSONDecoder())
+            .decode(type: T.self, decoder:  JSONDecoder.withFormating())
             .mapError { .decodingError($0.localizedDescription) }
             .eraseToAnyPublisher()
     }
