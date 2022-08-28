@@ -1,8 +1,12 @@
-"ipo_screen" = "IPO Calendar";
+"ipo_calendar__screen" = "IPO Calendar";
 "ipo_card__withdrawnOn" = "Filed on %@";
 "ipo_card__filedOn" = "Filed on %@";
 "ipo_card__pricedOn" = "Priced on %@";
-"ipo_card__pricedOnAndExchange" = "Priced on $1%@ － $2%@";
+"ipo_card__pricedOnAndExchange" = "Priced on %1$@ － %2$@";
 "ipo_card__expectedOn" = "Expected on %@";
 "ipo_card__expectedOnAndExchange" = "Expected on %1$@ － %2$@";
 "ipo_card__price" = "$ %@";
+
+"error_alert_title" = "Hello 👋";
+"error_alert_description" = "Looks like Something went wrong because: %@ \nPlease try again later!";
+"error_alert_cta" = "Ok";

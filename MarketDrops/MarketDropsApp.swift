@@ -6,9 +6,13 @@ struct MarketDropsApp: App {
     
     init() {
         router = TabBarRouter(
-            viewModel: .init(
-                selectedTab: .ipos,
-                ipoCalendarViewModel: .init()
+            store: .init(
+                initialState: .init(
+                    selectedTab: .ipos,
+                    ipoCalendar: .init()
+                ),
+                reducer: TabBar.reducer,
+                environment: .init(queue: .main)
             )
         )
     }

@@ -1,3 +1,4 @@
+import Foundation
 import MarketDropsDomain
 
 extension IPOCalendar {
@@ -11,14 +12,18 @@ extension IPOCalendar {
 
 extension IPOCalendar.Company {
     public static func fixture(
-        status: Status = .filed
+        name: String = "Apple",
+        symbol: String = "AAPL",
+        date: Date = .init(),
+        status: Status = .filed,
+        price: String = "38.40"
     ) -> Self {
         .init(
-            name: "Apple",
-            symbol: "AAPL",
-            date: .init(),
+            name: name,
+            symbol: symbol,
+            date: date,
             status: status,
-            price: "39.20"
+            price: price
         )
     }
 }

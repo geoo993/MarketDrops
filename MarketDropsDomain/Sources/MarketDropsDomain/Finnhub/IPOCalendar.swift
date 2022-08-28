@@ -9,7 +9,8 @@ public struct IPOCalendar: Equatable {
 }
 
 public extension IPOCalendar {
-    struct Company: Equatable {
+    struct Company: Equatable, Identifiable {
+        public let id: String
         public var name: String
         public var symbol: String?
         public var date: Date
@@ -17,12 +18,14 @@ public extension IPOCalendar {
         public var price: String?
         
         public init(
+            id: String = UUID().uuidString,
             name: String,
             symbol: String? = nil,
             date: Date,
             status: Status?,
             price: String? = nil
         ) {
+            self.id = id
             self.name = name
             self.symbol = symbol
             self.date = date
@@ -38,5 +41,16 @@ public extension IPOCalendar.Company {
         case filed
         case expected(exchange: String?)
         case priced(exchange: String?)
+        
+        public init?(_ model: String?, exchange: String?) {
+            guard let value = model else { return nil }
+            switch value {
+            case "withdrawn": self = .withdrawn
+            case "filed": self = .filed
+            case "expected": self = .expected(exchange: exchange)
+            case "priced": self = .priced(exchange: exchange)
+            default: return nil
+            }
+        }
     }
 }

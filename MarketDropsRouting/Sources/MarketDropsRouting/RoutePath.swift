@@ -1,4 +1,5 @@
 import Foundation
+import MarketDropsDomain
 
 public enum RoutePath: Equatable {
     case ipoCalendar(IpoRoutePath?)
@@ -7,7 +8,7 @@ public enum RoutePath: Equatable {
 }
 
 public enum IpoRoutePath: Equatable {
-    case newsFeed(String)
+    case company(IPOCalendar.Company)
 }
 
 extension RoutePath {
@@ -26,9 +27,23 @@ extension RoutePath {
     }
     
     static var ipoPath: ([String: String]) -> RoutePath = { query in
-        guard let feed = query["feed"] else {
+        guard
+            let symbol = query["symbol"],
+            let date = query["date"],
+            let dateValue = DateFormatter.date().date(from: date),
+            let status = query["status"]
+        else {
             return .ipoCalendar(nil)
         }
-        return .ipoCalendar(.newsFeed(feed))
+        let id = query["id"] ?? ""
+        return .ipoCalendar(.company(
+            .init(
+                id: id,
+                name: "",
+                symbol: symbol,
+                date: dateValue,
+                status: .init(status, exchange: nil)
+            )
+        ))
     }
 }

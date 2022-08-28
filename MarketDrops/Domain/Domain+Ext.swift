@@ -10,21 +10,11 @@ extension IPOCalendar {
 
 extension IPOCalendar.Company {
     init(model: MarketDropsAPIClient.IPOCalandar.Company) {
-        let status: Status? = {
-            guard let value = model.status else { return nil }
-            switch value {
-            case "withdrawn": return .withdrawn
-            case "filed": return .filed
-            case "expected": return .expected(exchange: model.exchange)
-            case "priced": return .priced(exchange: model.exchange)
-            default: return nil
-            }
-        }()
         self.init(
             name: model.name,
             symbol: model.symbol,
             date: model.date,
-            status: status,
+            status: .init(model.status, exchange: model.exchange),
             price: model.price
         )
     }

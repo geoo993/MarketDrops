@@ -1,11 +1,15 @@
 import SwiftUI
+import ComposableArchitecture
 
 struct TabBarView: View {
-    @ObservedObject var viewModel: TabBarViewModel
+    @ObservedObject var viewStore: TabBarViewStore
     private let tabRoutings: [TabRouting]
-    
-    init(viewModel: TabBarViewModel, tabRoutings: [TabRouting]) {
-        self.viewModel = viewModel
+
+    init(
+        viewStore: TabBarViewStore,
+        tabRoutings: [TabRouting]
+    ) {
+        self.viewStore = viewStore
         self.tabRoutings = tabRoutings
         setupUI()
     }
@@ -16,7 +20,9 @@ struct TabBarView: View {
     }
     
     var body: some View {
-        TabView(selection: $viewModel.selectedTab) {
+        TabView(
+            selection: viewStore.binding(get: \.selectedTab, send: TabBar.Action.didSelectTab)
+        ) {
             ForEach(tabRoutings) { tab in
                 NavigationView {
                     tab.router.contentView

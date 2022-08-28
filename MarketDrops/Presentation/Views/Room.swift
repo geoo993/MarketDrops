@@ -1,15 +1,17 @@
 import SwiftUI
 
-struct RoomOne<Content: View>: View {
+struct Room<Content: View>: View {
+    private let color: Color
     private let content: () -> Content
     
-    init(@ViewBuilder content: @escaping () -> Content) {
+    init(color: Color, @ViewBuilder content: @escaping () -> Content) {
+        self.color = color
         self.content = content
     }
     
     var body: some View {
         ZStack {
-            Color.red
+            color
             content()
         }
     }
@@ -17,7 +19,7 @@ struct RoomOne<Content: View>: View {
 
 struct RoomOne_Previews: PreviewProvider {
     static var previews: some View {
-        RoomOne {
+        Room(color: .red) {
             Text("Hello")
         }
     }

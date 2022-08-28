@@ -6,7 +6,10 @@ final class FavouritesRouter {}
 extension FavouritesRouter: Router {
     var contentView: AnyView {
         AnyView (
-            RoomThree()
+            Room(color: .green) {
+                Text("Room Three")
+                    .foregroundColor(Color.white)
+            }
         )
     }
 }
