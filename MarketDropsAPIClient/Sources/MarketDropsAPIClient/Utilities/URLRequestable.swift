@@ -1,9 +1,10 @@
 import Foundation
+import Combine
 
 public protocol URLRequestable {
     var session: HTTPSession { get }
     func execute<T: HTTPRequest, V: Decodable>(
-        with request: T,
-        completion: @escaping (Result<V, T.ErrorObject>) -> Void
-    ) where T: HTTPRequest, T.ResponseObject == V, T.ErrorObject == MarketDropsAPIClient.Error
+        request: T
+    ) -> AnyPublisher<V, T.ErrorObject>
+    where T.ResponseObject == V, T.ErrorObject == MarketDropsAPIClient.Error
 }

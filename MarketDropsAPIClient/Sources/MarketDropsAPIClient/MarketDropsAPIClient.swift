@@ -2,10 +2,8 @@ import Foundation
 import Combine
 import MarketDropsCore
 
-private typealias HTTPDataTaskResult = (data: Data?, response: HTTPURLResponse?, error: Error?)
-
 public final class MarketDropsAPIClient {
-    private let session: HTTPSession
+    public let session: HTTPSession
     private let networkMonitor: NetworkMonitoring
 
     public init(
@@ -17,32 +15,25 @@ public final class MarketDropsAPIClient {
     }
 }
 
-extension MarketDropsAPIClient {
-    public func execute<T, V: Decodable>(request: T) -> AnyPublisher<V, T.ErrorObject>
-    where T: HTTPRequest, T.ResponseObject == V, T.ErrorObject == Error {
-        Future { promise in
-            self.execute(with: request, completion: promise)
-        }.eraseToAnyPublisher()
-    }
-    
-    func execute<T: HTTPRequest, V: Decodable>(
-        with request: T,
-        completion: @escaping (Result<V, T.ErrorObject>) -> Void
-    ) where T: HTTPRequest, T.ResponseObject == V, T.ErrorObject == Error {
+extension MarketDropsAPIClient: URLRequestable {
+    public func execute<T: HTTPRequest, V: Decodable>(
+        request: T
+    ) -> AnyPublisher<V, T.ErrorObject>
+    where T.ResponseObject == V, T.ErrorObject == Error {
         guard networkMonitor.isConnected else {
-            completion(.failure(.noConnection))
-            return
+            return Fail(error: .noConnection).eraseToAnyPublisher()
         }
         do {
-            let request = try self.request(from: request)
-            let task = session.dataTask(with: request) {
-                self.process(result: ($0, $1 as? HTTPURLResponse, $2), completion: completion)
-            }
-            task.resume()
+            let url = try self.request(from: request)
+            return session.dataTaskResponse(for: url)
+                .receive(on: request.queue)
+                .mapError { .dataTaskFailed($0) }
+                .flatMap(process)
+                .eraseToAnyPublisher()
         } catch let error {
-            completion(
-                .failure(error as? MarketDropsAPIClient.Error ?? .failed(error.localizedDescription))
-            )
+            return Fail(
+                error: error as? MarketDropsAPIClient.Error ?? .failed(error.localizedDescription)
+            ).eraseToAnyPublisher()
         }
     }
 
@@ -90,36 +81,34 @@ extension MarketDropsAPIClient {
     }
     
     private func process<T: Decodable>(
-        result: HTTPDataTaskResult,
-        completion: @escaping (Result<T, Error>) -> Void
-    ) {
-        if let error = result.error { completion(.failure(.dataTaskFailed(error))) }
-        switch (result.data, result.response) {
-        case let (.some(data), .some(response)) where HTTPCodes.success ~= response.statusCode:
-            self.decode(data: data, completion: completion)
+        _ result: URLSession.DataTaskPublisher.Output
+    ) -> AnyPublisher<T, Error> {
+        let responseValue = result.response as? HTTPURLResponse
+        switch (result.data, responseValue) {
+        case let (data, .some(response)) where HTTPCodes.success ~= response.statusCode:
+            return decode(data: data)
         case let (_, .some(response)):
-            completion(.failure(self.handleResponse(with: response)))
+            return Fail(error: error(for: response.statusCode)).eraseToAnyPublisher()
         default:
-            completion(.failure(.noResponse))
+            return Fail(error: .noResponse).eraseToAnyPublisher()
         }
     }
     
     private func decode<T: Decodable>(
-        data: Data,
-        completion: @escaping (Result<T, Error>) -> Void
-    ) {
-        do {
-            let model = try JSONDecoder().decode(T.self, from: data)
-            completion(.success(model))
-        } catch {
-            completion(.failure(.decodingError(error.localizedDescription)))
-        }
+        data: Data
+    ) -> AnyPublisher<T, Error> {
+        return Just(data)
+            .decode(type: T.self, decoder:  JSONDecoder())
+            .mapError { .decodingError($0.localizedDescription) }
+            .eraseToAnyPublisher()
     }
-    
-    private func handleResponse(with response: HTTPURLResponse) -> MarketDropsAPIClient.Error {
-        switch response.statusCode {
+
+    private func error(
+        for code: HTTPCode
+    ) -> MarketDropsAPIClient.Error {
+        switch code {
         case HTTPCodes.authError: return .authenticationError
-        case HTTPCodes.badResponse: return .badResponse(response.statusCode)
+        case HTTPCodes.badResponse: return .badResponse(code)
         case HTTPCodes.outdated: return .outdatedRequest
         default: return .unknown
         }

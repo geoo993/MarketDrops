@@ -14,6 +14,7 @@ public protocol HTTPRequest {
     var queryItems: [URLQueryItem]? { get }
     var body: HTTPBody? { get set }
     var timeoutInterval: TimeInterval { get }
+    var queue: DispatchQueue { get set }
 }
 
 public extension HTTPRequest {

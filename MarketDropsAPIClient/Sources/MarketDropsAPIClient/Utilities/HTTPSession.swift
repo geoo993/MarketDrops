@@ -1,24 +1,13 @@
 import Foundation
-
-public protocol HTTPSessionDataTask {
-    func resume()
-}
+import Combine
 
 public protocol HTTPSession {
-    func dataTask(
-        with request: URLRequest,
-        completion: @escaping (Data?, URLResponse?, Error?) -> Void
-    ) -> HTTPSessionDataTask
+    typealias HTTPResponse = URLSession.DataTaskPublisher.Output
+    func dataTaskResponse(for request: URLRequest) -> AnyPublisher<HTTPResponse, URLError>
 }
 
 extension URLSession: HTTPSession {
-    public func dataTask(
-        with request: URLRequest,
-        completion: @escaping (Data?, URLResponse?, Error?) -> Void
-    ) -> HTTPSessionDataTask {
-        (dataTask(with: request, completionHandler: completion) as URLSessionDataTask) as HTTPSessionDataTask
+    public func dataTaskResponse(for request: URLRequest) -> AnyPublisher<HTTPResponse, URLError> {
+        dataTaskPublisher(for: request).eraseToAnyPublisher()
     }
 }
-
-extension URLSessionDataTask: HTTPSessionDataTask {}
-

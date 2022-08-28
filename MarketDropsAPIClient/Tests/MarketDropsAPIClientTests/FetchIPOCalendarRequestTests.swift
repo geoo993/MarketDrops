@@ -30,13 +30,7 @@ final class FetchIPOCalendarRequestTests: XCTestCase {
             )
         )
         let request = FetchIPOCalendarRequest()
-        apiClient.execute(with: request) { result in
-            switch result {
-            case let .success(value):
-                XCTAssertEqual(value.companies.count, 3)
-            case let .failure(error):
-                XCTFail(error.localizedDescription)
-            }
-        }
+        let result = try result(apiClient.execute(request: request))
+        XCTAssertEqual(result.companies.count, 3)
     }
 }

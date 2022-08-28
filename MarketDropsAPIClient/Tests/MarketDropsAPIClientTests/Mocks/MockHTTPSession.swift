@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 @testable import  MarketDropsAPIClient
 
 final class MockHTTPSession: HTTPSession {
@@ -7,17 +8,25 @@ final class MockHTTPSession: HTTPSession {
     func register(stub: Stub) {
         self.stub = stub
     }
-
-    func dataTask(
-        with request: URLRequest,
-        completion: @escaping (Data?, URLResponse?, Error?) -> Void
-    ) -> HTTPSessionDataTask {
+    
+    func dataTaskResponse(for request: URLRequest) -> AnyPublisher<HTTPResponse, URLError> {
         let stub = self.registeredStub(for: request)
-        return MockHTTPSessionDataTask(
-            request: request,
-            session: self,
-            stub: stub,
-            completionHandler: completion)
+        if
+            let statusCode = stub?.statusCode,
+            let url = request.url,
+            let data = stub?.data
+        {
+            let response = HTTPURLResponse(
+                url: url,
+                statusCode: statusCode,
+                httpVersion: "HTTP/1.1",
+                headerFields: nil
+            )!
+            return Just((data, response))
+                .setFailureType(to: URLError.self)
+                .eraseToAnyPublisher()
+        }
+        return Fail(error: URLError(.dataNotAllowed)).eraseToAnyPublisher()
     }
     
     private func registeredStub(for request: URLRequest) -> Stub? {
@@ -30,7 +39,6 @@ final class MockHTTPSession: HTTPSession {
         return stub
     }
 }
-    
 
 extension MockHTTPSession {
     struct Stub {
