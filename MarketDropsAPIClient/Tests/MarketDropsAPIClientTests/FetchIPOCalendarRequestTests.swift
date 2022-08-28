@@ -1,7 +1,7 @@
 import XCTest
 @testable import MarketDropsAPIClient
 
-final class FetchIPOCalendarRequestTests: XCTestCase {
+final class FetchIPOCalendarRequestTests: XCCombineTestCase {
     var apiClient: MarketDropsAPIClient!
     var session: MockHTTPSession!
         
@@ -29,8 +29,22 @@ final class FetchIPOCalendarRequestTests: XCTestCase {
                 data: FetchIPOCalendarRequest.dummy()
             )
         )
+        
         let request = FetchIPOCalendarRequest()
-        let result = try result(apiClient.execute(request: request))
-        XCTAssertEqual(result.companies.count, 3)
+        var output: MarketDropsAPIClient.IPOCalandar?
+        let expectation = XCTestExpectation(description: "Completion")
+        apiClient.execute(request: request)
+            .sinkToResult { result in
+                switch result {
+                case let .success(value):
+                    output = value
+                case let .failure(error):
+                    XCTFail(error.localizedDescription)
+                }
+                expectation.fulfill()
+            }.store(in: &cancellables)
+        wait(for: [expectation], timeout: 1)
+        
+        XCTAssertEqual(output?.companies.count, 3)
     }
 }
