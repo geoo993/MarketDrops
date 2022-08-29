@@ -1,0 +1,22 @@
+[
+    {
+        "accessNumber": "0001493152-22-023814",
+        "symbol": "BIAF",
+        "cik": "1712762",
+        "form": "8-A12B/A",
+        "filedDate": "2022-08-23 00:00:00",
+        "acceptedDate": "2022-08-23 14:13:01",
+        "reportUrl": "https://www.sec.gov/Archives/edgar/data/1712762/000149315222023814/form8-a12ba.htm",
+        "filingUrl": "https://www.sec.gov/Archives/edgar/data/1712762/000149315222023814/0001493152-22-023814-index.html"
+    },
+    {
+        "accessNumber": "0001493152-22-023475",
+        "symbol": "BIAF",
+        "cik": "1712762",
+        "form": "S-1/A",
+        "filedDate": "2022-08-18 00:00:00",
+        "acceptedDate": "2022-08-18 17:03:58",
+        "reportUrl": "https://www.sec.gov/Archives/edgar/data/1712762/000149315222023475/forms-1a.htm",
+        "filingUrl": "https://www.sec.gov/Archives/edgar/data/1712762/000149315222023475/0001493152-22-023475-index.html"
+    }
+]

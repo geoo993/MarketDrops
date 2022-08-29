@@ -42,6 +42,8 @@
 		C7CFDAE728B2504F005D8E61 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CFDAE628B2504F005D8E61 /* TabBar.swift */; };
 		C7CFDAE928B25132005D8E61 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CFDAE828B25132005D8E61 /* TabItem.swift */; };
 		C7D3147028B0E87E006B036E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7D3146F28B0E87E006B036E /* LaunchScreen.storyboard */; };
+		C7E8100D28BCD65100039E8D /* NewsFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E8100C28BCD65100039E8D /* NewsFeed.swift */; };
+		C7E8100F28BCD7E100039E8D /* NewsFeed.DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E8100E28BCD7E100039E8D /* NewsFeed.DataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,8 @@
 		C7CFDAE628B2504F005D8E61 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		C7CFDAE828B25132005D8E61 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		C7D3146F28B0E87E006B036E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C7E8100C28BCD65100039E8D /* NewsFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeed.swift; sourceTree = "<group>"; };
+		C7E8100E28BCD7E100039E8D /* NewsFeed.DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeed.DataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				C75C3C4528B9154F006C4DEB /* NewsFeedRouter.swift */,
+				C7E8100C28BCD65100039E8D /* NewsFeed.swift */,
+				C7E8100E28BCD7E100039E8D /* NewsFeed.DataProvider.swift */,
 			);
 			path = NewsFeed;
 			sourceTree = "<group>";
@@ -280,11 +286,11 @@
 		C7CFDAE528B25035005D8E61 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				C7CFDAE228B24C3A005D8E61 /* TabBarRouter.swift */,
 				C7CFDADF28B24BC4005D8E61 /* TabBarView.swift */,
 				C7CFDAE628B2504F005D8E61 /* TabBar.swift */,
 				C7CFDAE828B25132005D8E61 /* TabItem.swift */,
 				C75C3C3528B8ECF9006C4DEB /* TabRouting.swift */,
+				C7CFDAE228B24C3A005D8E61 /* TabBarRouter.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -414,6 +420,7 @@
 				C75C3C4628B9154F006C4DEB /* NewsFeedRouter.swift in Sources */,
 				C7133FA828BBFF5B004953C8 /* Loading.swift in Sources */,
 				C723436E28B96C1A00CC1979 /* Binding.swift in Sources */,
+				C7E8100F28BCD7E100039E8D /* NewsFeed.DataProvider.swift in Sources */,
 				C7133FA628BBFC07004953C8 /* DataController.swift in Sources */,
 				C7133FA028BBB3DB004953C8 /* Localisation.swift in Sources */,
 				C7CFDAE728B2504F005D8E61 /* TabBar.swift in Sources */,
@@ -425,6 +432,7 @@
 				C75C3C2C28B8E46E006C4DEB /* Room.swift in Sources */,
 				C7133F9B28BBB080004953C8 /* UIConstants.swift in Sources */,
 				C7CFDAE028B24BC4005D8E61 /* TabBarView.swift in Sources */,
+				C7E8100D28BCD65100039E8D /* NewsFeed.swift in Sources */,
 				C79D739628B0DCCD004266CF /* MarketDropsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,6 +12,8 @@ public extension JSONDecoder {
                 return date
             } else if let date = DateFormatter.date().date(from: string) {
                 return date
+            } else if let date = DateFormatter.dateAndTime().date(from: string) {
+                return date
             } else {
                 throw DecodingError.dataCorruptedError(
                     in: container,

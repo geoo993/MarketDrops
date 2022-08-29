@@ -37,6 +37,9 @@ extension TabBarRouter: Router {
             .onOpenURL { url in
                 self.viewStore.send(.open(url))
             }
+            .onAppear {
+                self.viewStore.send(.ipoCalendar(.fetchIpoCalendar))
+            }
         )
     }
 }

@@ -3,7 +3,7 @@ import Combine
 import MarketDropsAPIClient
 import MarketDropsDomain
 
-extension IPOs {
+extension NewsFeed {
     enum Error: LocalizedError, Equatable {
         case apiError(MarketDropsAPIClient.Error)
         
@@ -16,21 +16,21 @@ extension IPOs {
     }
     
     struct DataProvider {
-        var calendar: () -> AnyPublisher<IPOCalendar, Error>
+        var filings: (String) -> AnyPublisher<[CompanyFiling], Error>
     }
 }
 
-extension IPOs.DataProvider {
+extension NewsFeed.DataProvider {
     static var live: Self = .init(
-        calendar: {
+        filings: { symbol in
             DataController.shared.apiClient.execute(
-                request: FetchIPOCalendarRequest(
-                    fromDate: Date.days(by: -14),
-                    toDate: Date.days(by: 21)
+                request: FetchCompanyFilingsRequest(
+                    symbol: symbol,
+                    fromDate: Date.days(by: -30)
                 )
-            )
-            .map(IPOCalendar.init)
-            .mapError { IPOs.Error.apiError($0) }
+            ) 
+            .map{ $0.map(CompanyFiling.init) }
+            .mapError { NewsFeed.Error.apiError($0) }
             .eraseToAnyPublisher()
         }
     )

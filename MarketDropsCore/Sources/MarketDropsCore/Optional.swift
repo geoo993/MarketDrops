@@ -13,3 +13,10 @@ extension Optional where Wrapped: Collection {
         self?.isEmpty ?? true
     }
 }
+
+extension Optional where Wrapped: StringProtocol {
+    public var toUrl: URL? {
+        guard let urlString = self as? String else { return nil }
+        return URL(string: urlString)
+    }
+}

@@ -62,3 +62,17 @@ extension IPOCalendar.Company {
         }
     }
 }
+
+extension CompanyFiling {
+    init(model: MarketDropsAPIClient.CompanyFiling) {
+        self.init(
+            accessNumber: model.accessNumber,
+            symbol: model.symbol,
+            cik: model.cik,
+            form: model.form,
+            date: model.date,
+            reportUrl: model.reportUrl.toUrl,
+            filingUrl: model.filingUrl.toUrl
+        )
+    }
+}

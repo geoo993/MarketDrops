@@ -28,4 +28,18 @@ final class DateFormatterTests: XCTestCase {
         let result = DateFormatter.shortHand().string(from: date)
         XCTAssertEqual(result, "Oct 21, 2022")
     }
+    
+    func test_dateAndTimeFails() {
+        let dateString = "20-10-2022 12:45:24"
+        let date = DateFormatter.dateAndTime().date(from: dateString)
+        XCTAssertNil(date)
+    }
+    
+    func test_dateAndTimeSucceeds() throws {
+        let dateString = "2022-08-23 14:13:01"
+        let formatter = DateFormatter.dateAndTime()
+        let date = try XCTUnwrap(formatter.date(from: dateString))
+        let result = formatter.string(from: date)
+        XCTAssertEqual(result, dateString)
+    }
 }

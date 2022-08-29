@@ -20,4 +20,14 @@ final class OptionalTests: XCTestCase {
         value = "Hello, World!"
         XCTAssertTrue(value.isNotNil)
     }
+    
+    func test_stringToUrl() {
+        var value: String?
+        XCTAssertNil(value.toUrl)
+        
+        value = "www.google.com"
+        let result = value.toUrl
+        XCTAssertNotNil(value.toUrl)
+        XCTAssertEqual(result, URL(string: "www.google.com"))
+    }
 }

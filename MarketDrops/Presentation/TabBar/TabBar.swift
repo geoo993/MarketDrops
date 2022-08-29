@@ -28,7 +28,8 @@ enum TabBar {
             environment: {
                 .init(
                     dataProvider: .live,
-                    queue: $0.queue)
+                    queue: $0.queue
+                )
             }
         ),
         .init { state, action, environment in

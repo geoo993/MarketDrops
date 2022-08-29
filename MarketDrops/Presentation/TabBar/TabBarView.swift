@@ -11,12 +11,6 @@ struct TabBarView: View {
     ) {
         self.viewStore = viewStore
         self.tabRoutings = tabRoutings
-        setupUI()
-    }
-    
-    private func setupUI() {
-        UITabBar.appearance().unselectedItemTintColor = UIColor(Color.primary)
-        UITabBar.appearance().barTintColor = UIColor(Color.green)
     }
     
     var body: some View {

@@ -9,7 +9,9 @@ struct MarketDropsApp: App {
             store: .init(
                 initialState: .init(
                     selectedTab: .ipos,
-                    ipoCalendar: .init()
+                    ipoCalendar: .init(
+                        newsfeed: .init(company: nil)
+                    )
                 ),
                 reducer: TabBar.reducer,
                 environment: .init(queue: .main)

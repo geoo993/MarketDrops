@@ -16,4 +16,12 @@ public extension DateFormatter {
         formatter.dateFormat = "MMM d, yyyy"
         return formatter
     }
+    
+    /// A date formatter used to make a date with day and time in the format of `yyyy-MM-dd HH:mm:ss`, example result `2022-03-31 20:00:00`
+    /// - Returns: A `DateFormatter` instance.
+    static func dateAndTime() -> DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyy-MM-dd HH:mm:ss"
+        return formatter
+    }
 }

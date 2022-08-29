@@ -7,6 +7,8 @@
 "ipo_card__expectedOnAndExchange" = "Expected on %1$@ － %2$@";
 "ipo_card__price" = "$ %@";
 
+"newsfeed__filingsSectionTitle" = "Filings";
+
 "error_alert_title" = "Hello 👋";
-"error_alert_description" = "Looks like Something went wrong because: %@ \nPlease try again later!";
+"error_alert_description" = "Looks like Something went wrong.\n %@ \nPlease try again later!";
 "error_alert_cta" = "Ok";
