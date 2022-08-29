@@ -11,11 +11,11 @@ public struct IPOCalendar: Equatable {
 public extension IPOCalendar {
     struct Company: Equatable, Identifiable {
         public let id: String
-        public var name: String
-        public var symbol: String?
-        public var date: Date
-        public var status: Status?
-        public var price: String?
+        public let name: String
+        public let symbol: String?
+        public let date: Date
+        public let status: Status?
+        public let price: String?
         
         public init(
             id: String = UUID().uuidString,

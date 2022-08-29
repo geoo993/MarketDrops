@@ -12,11 +12,11 @@ public extension MarketDropsAPIClient {
 
 public extension MarketDropsAPIClient.IPOCalandar {
     struct Company: Decodable {
-        public var name: String
-        public var symbol: String?
-        public var date: Date
-        public var exchange: String?
-        public var status: String?
-        public var price: String?
+        public let name: String
+        public let symbol: String?
+        public let date: Date
+        public let exchange: String?
+        public let status: String?
+        public let price: String?
     }
 }

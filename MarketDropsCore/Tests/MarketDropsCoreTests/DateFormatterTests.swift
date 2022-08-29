@@ -42,4 +42,18 @@ final class DateFormatterTests: XCTestCase {
         let result = formatter.string(from: date)
         XCTAssertEqual(result, dateString)
     }
+    
+    func test_iso8601DateFails() {
+        let dateString = "20-10-2022T12:45:24.000000Z"
+        let date = ISO8601DateFormatter.iso8601Full().date(from: dateString)
+        XCTAssertNil(date)
+    }
+    
+    func test_iso8601DateSucceeds() throws {
+        let dateString = "2022-06-17T23:36:42.000Z"
+        let formatter = ISO8601DateFormatter.iso8601Full()
+        let date = try XCTUnwrap(formatter.date(from: dateString))
+        let result = formatter.string(from: date)
+        XCTAssertEqual(result, dateString)
+    }
 }

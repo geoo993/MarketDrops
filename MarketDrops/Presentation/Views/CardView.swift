@@ -11,14 +11,15 @@ struct CardView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     HStack {
                         Text(item.name)
-                            .font(.system(size: 20, weight: .bold))
+                            .font(.body)
+                            .fontWeight(.bold)
                             .foregroundColor(Color.white)
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                             .lineLimit(2)
                         VStack {
                             Unwrap(item.symbol) { value in
                                 Text(value)
-                                    .font(.system(size: 16, weight: .medium))
+                                    .font(.body)
                                     .foregroundColor(Color.white)
                                     .frame(alignment: .trailing)
                                     .lineLimit(1)
@@ -29,13 +30,13 @@ struct CardView: View {
                     VStack(alignment: .leading, spacing: 5) {
                         Unwrap(item.price) { value in
                             Text("ipo_card__price".localized(arguments: value))
-                                .font(.system(size: 30, weight: .medium))
+                                .font(.system(size: 30, weight: .bold))
                                 .foregroundColor(Color.white)
                         }
                         HStack {
                             Unwrap(item.description) { value in
                                 Text(value)
-                                    .font(.system(size: 12, weight: .medium))
+                                    .font(.footnote)
                                     .padding(.all, 4)
                                     .foregroundColor(Color.white)
                             }

@@ -1,0 +1,70 @@
+{
+    "meta": {
+        "found": 13,
+        "returned": 3,
+        "limit": 3,
+        "page": 1
+    },
+    "data": [
+        {
+            "uuid": "521e8e88-4cde-4930-a40d-1eb24bf5ee5a",
+            "title": "Hempacco IPO: HPCO Stock is Ready to Roll",
+            "description": "The Hempacco IPO enters the stock market with its August 30, 2022 debut. Let's learn what to expect from the HPCO IPO.",
+            "keywords": "",
+            "snippet": "The Hempacco IPO enters the stock market with its August 30, 2022 debut. In fact, many investors are keeping a close eye on HPCO stock. So, what is Hempacco and...",
+            "url": "https://investmentu.com/hempacco-ipo/",
+            "image_url": "https://investmentu.com/wp-content/uploads/2022/08/hempacco-ipo.jpg",
+            "language": "en",
+            "published_at": "2022-08-29T13:11:36.000000Z",
+            "source": "investmentu.com",
+            "relevance_score": 45.981926,
+            "entities": [],
+            "similar": []
+        },
+        {
+            "uuid": "f827f25c-781b-4c69-8524-170bc6cefba9",
+            "title": "Hempacco Stock: Targets $15M IPO For Growth & Acquisitions (HPCO)",
+            "description": "Hempacco has filed to raise $15M from its IPO. Though HPCO's IPO will likely attract day traders seeking volatility, why am I neutral on the stock? Find out.",
+            "keywords": "",
+            "snippet": "janiecbros/E+ via Getty Images\n\nA Quick Take On Hempacco\n\nHempacco (HPCO) has filed to raise $15 million from the sale of its common stock in an IPO, according ...",
+            "url": "https://seekingalpha.com/article/4519038-hempacco-hemp-ipo",
+            "image_url": "https://static.seekingalpha.com/cdn/s3/uploads/getty_images/1318680802/image_1318680802.jpg?io=getty-c-w750",
+            "language": "en",
+            "published_at": "2022-06-17T23:36:42.000000Z",
+            "source": "seekingalpha.com",
+            "relevance_score": 40.569176,
+            "entities": [],
+            "similar": [
+                {
+                    "uuid": "bd9040a8-3edf-44f7-9c3e-c4d5d03170b1",
+                    "title": "Hemp cigarette maker Hempacco discloses terms for proposed $15M IPO (Pending:HPCO)",
+                    "description": "Hempacco (HPCO), a maker of hemp-based cigarettes, has disclosed terms for a proposed $15M initial public offering",
+                    "keywords": "",
+                    "snippet": "Hempacco (HPCO), a maker of hemp-based cigarettes, has disclosed terms for a proposed $15M initial public offering.\n\nThe company said it plans on offering 3M sh...",
+                    "url": "https://seekingalpha.com/news/3849761-hemp-cigarette-maker-hempacco-discloses-terms-for-proposed-15m-ipo",
+                    "image_url": "https://static.seekingalpha.com/cdn/s3/uploads/getty_images/1318624804/image_1318624804.jpg?io=getty-c-w750",
+                    "language": "en",
+                    "published_at": "2022-06-17T21:39:20.000000Z",
+                    "source": "seekingalpha.com",
+                    "relevance_score": 40.569176,
+                    "entities": []
+                }
+            ]
+        },
+        {
+            "uuid": "eede8d14-a09b-43aa-a67e-e15fd792e2a4",
+            "title": "Hempacco (HPCO) Begins U.S. IPO Process",
+            "description": "Hempacco Co. has filed to raise investment capital via a U.S. The company sells hemp-based smokable products in the U.S. Read more about the HPCO IPO here.",
+            "keywords": "",
+            "snippet": "Sinhyu/iStock via Getty Images\n\nA Quick Take On Hempacco\n\nHempacco Co. (HPCO) has filed to raise an undisclosed amount in an IPO of its common stock, according ...",
+            "url": "https://seekingalpha.com/article/4498398-hempacco-hpco-begins-us-ipo-process",
+            "image_url": "https://media.gettyimages.com/photos/marijuana-leaves-powder-of-cannabis-on-a-white-background-for-in-picture-id1095423236?b=1&k=20&m=1095423236&s=170667a&w=0&h=b2MVt3hbEaDHb6f7G7BbnIlZIZ65KHT__qeOco6f2ho=",
+            "language": "en",
+            "published_at": "2022-03-29T17:15:33.000000Z",
+            "source": "seekingalpha.com",
+            "relevance_score": 39.46704,
+            "entities": [],
+            "similar": []
+        }
+    ]
+}

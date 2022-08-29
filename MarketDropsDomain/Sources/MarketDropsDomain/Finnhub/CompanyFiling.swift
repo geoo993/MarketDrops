@@ -2,13 +2,13 @@ import Foundation
 
 public struct CompanyFiling: Equatable, Identifiable {
     public var id: String { "\(symbol) \(accessNumber)" }
-    public var accessNumber: String
-    public var symbol: String
-    public var cik: String
-    public var form: String?
-    public var date: Date
-    public var reportUrl: URL?
-    public var filingUrl: URL?
+    public let accessNumber: String
+    public let symbol: String
+    public let cik: String
+    public let form: String?
+    public let date: Date
+    public let reportUrl: URL?
+    public let filingUrl: URL?
     
     public init(
         accessNumber: String,

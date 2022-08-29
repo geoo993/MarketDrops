@@ -2,13 +2,13 @@ import Foundation
 
 public extension MarketDropsAPIClient {
     struct CompanyFiling: Decodable {
-        public var accessNumber: String
-        public var symbol: String
-        public var cik: String
-        public var form: String?
-        public var date: Date
-        public var reportUrl: String?
-        public var filingUrl: String?
+        public let accessNumber: String
+        public let symbol: String
+        public let cik: String
+        public let form: String?
+        public let date: Date
+        public let reportUrl: String?
+        public let filingUrl: String?
         
         enum CodingKeys: String, CodingKey {
             case accessNumber

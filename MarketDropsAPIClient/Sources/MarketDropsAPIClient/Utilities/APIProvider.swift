@@ -1,29 +1,25 @@
 import Foundation
 
 public enum APIProvider {
-    case finnhub, marketaux, cityfalcon
+    case finnhub, marketaux
 }
 
 extension APIProvider {
-    var baseUrl: URL? {
+    var baseUrl: URL {
         switch self {
         case .finnhub:
             return URL(string: "https://finnhub.io")!
         case .marketaux:
             return URL(string: "https://api.marketaux.com")!
-        case .cityfalcon:
-            return URL(string: "https://sandbox-api.cityfalcon.com")
         }
     }
     
     var apiToken: String {
         switch self {
         case .finnhub:
-            return ""
+            return "bs8u7q7rh5re5dkf6kig"
         case .marketaux:
-            return ""
-        case .cityfalcon:
-            return ""
+            return "w43sj7tt6QU68bJmdXyvpgPSpQR3PijnlkxeGJc9"
         }
     }
 }

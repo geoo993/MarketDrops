@@ -64,11 +64,7 @@ enum IPOs {
                 
             case let .didLoad(.failure(error)):
                 state.calendar = .error(AnyError(error))
-                state.alert = .init(
-                    title: TextState("error_alert_title".localized),
-                    message: TextState(error.errorDescription ?? ""),
-                    dismissButton: .default(TextState("error_alert_cta".localized))
-                )
+                state.alert = .errorAlert(error.errorDescription ?? "")
                 return .none
                 
             case .alertDismissed:

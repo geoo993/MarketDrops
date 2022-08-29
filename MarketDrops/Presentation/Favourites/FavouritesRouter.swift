@@ -10,7 +10,7 @@ extension FavouritesRouter: Router {
         AnyView (
             Room(color: color) {
                 Text("Room Three")
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color.green)
             }
         )
     }

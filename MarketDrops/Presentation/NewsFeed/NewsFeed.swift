@@ -4,18 +4,22 @@ import MarketDropsRouting
 import MarketDropsDomain
 
 typealias NewsFeedStore = Store<NewsFeed.State, NewsFeed.Action>
+typealias NewsFeedViewStore = ViewStore<NewsFeed.State, NewsFeed.Action>
 
 enum NewsFeed {
     struct State: Equatable {
         var company: IPOCalendar.Company?
         var filings: Loading<[CompanyFiling]> = .idle
+        var news: Loading<CompanyNews> = .idle
         var alert: AlertState<Action>?
         var favoured = false
     }
 
     enum Action: Equatable {
         case fetchFilings
-        case didLoad(Result<[CompanyFiling], Error>)
+        case didLoadFilings(Result<[CompanyFiling], Error>)
+        case fetchNews
+        case didLoadNews(Result<CompanyNews, Error>)
         case didTapFavourite
         case alertDismissed
     }
@@ -31,25 +35,43 @@ enum NewsFeed {
             state.alert = .none
             state.filings = .loading(previous: .none)
             guard let symbol = state.company?.symbol else {
-                return Effect(value: .didLoad(.success([])))
+                return Effect(value: .didLoadFilings(.success([])))
             }
             return environment.dataProvider.filings(symbol)
                 .receive(on: environment.queue)
                 .catchToEffect()
-                .map(Action.didLoad)
+                .map(Action.didLoadFilings)
                 .eraseToEffect()
 
-        case let .didLoad(.success(value)):
+        case let .didLoadFilings(.success(value)):
             state.filings = value.isEmpty ? .idle : .loaded(value) 
             return .none
 
-        case let .didLoad(.failure(error)):
+        case let .didLoadFilings(.failure(error)):
             state.filings = .error(AnyError(error))
-            state.alert = .init(
-                title: TextState("error_alert_title".localized),
-                message: TextState(error.errorDescription ?? ""),
-                dismissButton: .default(TextState("error_alert_cta".localized))
-            )
+            state.alert = .errorAlert(error.errorDescription ?? "")
+            return .none
+        
+        case .fetchNews:
+            state.alert = .none
+            state.news = .loading(previous: .none)
+            guard let symbol = state.company?.symbol else {
+                state.news = .idle
+                return .none
+            }
+            return environment.dataProvider.news(symbol)
+                .receive(on: environment.queue)
+                .catchToEffect()
+                .map(Action.didLoadNews)
+                .eraseToEffect()
+            
+        case let .didLoadNews(.success(value)):
+            state.news = value.articles.isEmpty ? .idle : .loaded(value)
+            return .none
+
+        case let .didLoadNews(.failure(error)):
+            state.filings = .error(AnyError(error))
+            state.alert = .errorAlert(error.errorDescription ?? "")
             return .none
             
         case .didTapFavourite:

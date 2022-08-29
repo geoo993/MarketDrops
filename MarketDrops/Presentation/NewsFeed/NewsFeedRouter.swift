@@ -18,33 +18,11 @@ extension NewsFeedRouter: Router {
         AnyView (
             WithViewStore(self.store) { viewStore in
                 Room(color: self.color) {
-                    List {
-                        Unwrap(viewStore.filings.loaded) { value in
-                            Section {
-                                ForEach(value) { filing in
-                                    Text(filing.symbol)
-                                }
-                            } header: {
-                                Text("newsfeed__filingsSectionTitle")
-                            }
-                            .headerProminence(.increased)
-                        }
-                        
-                        Section {
-                            Text("Item 2")
-                            Text("Item 3")
-                            Text("Item 4")
-                        }
-                        Section {
-                            Text("Item 5")
-                            Text("Item 6")
-                            Text("Item 7")
-                        }
-                    }
-                    .listRowBackground(self.color)
+                    NewsFeedView(viewStore: viewStore, color: self.color)
                 }
                 .onAppear {
                     viewStore.send(.fetchFilings)
+                    viewStore.send(.fetchNews)
                 }
                 .alert(self.store.scope(state: \.alert), dismiss: .alertDismissed)
                 .navigationBarItems(trailing:

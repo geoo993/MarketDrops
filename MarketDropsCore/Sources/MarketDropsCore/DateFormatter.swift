@@ -25,3 +25,14 @@ public extension DateFormatter {
         return formatter
     }
 }
+
+public extension ISO8601DateFormatter {
+    
+    /// A date formatter used to make a date with day and time in the format of `YYYY-MM-dd'T'HH:mm:ss.SSSZZZZZ`, example result `2022-06-17T23:36:42.000000Z`
+    /// - Returns: A `ISO8601DateFormatter` instance.
+    static func iso8601Full() -> ISO8601DateFormatter {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return formatter
+    }
+}

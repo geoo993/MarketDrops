@@ -41,7 +41,7 @@ extension IPOCalendar.Company {
     
     var description: String? {
         guard let value = status else { return nil }
-        let dateValue = DateFormatter.shortHand().string(from: date)
+        let dateValue = date.formatted
         switch value {
         case .withdrawn:
             return "ipo_card__withdrawnOn".localized(arguments: dateValue)
@@ -73,6 +73,45 @@ extension CompanyFiling {
             date: model.date,
             reportUrl: model.reportUrl.toUrl,
             filingUrl: model.filingUrl.toUrl
+        )
+    }
+    
+    var filingDescription: String {
+        "newsfeed__filingsFootnote".localized(arguments: form ?? "", date.formatted)
+    }
+}
+
+extension CompanyNews.Pagination {
+    init(model: MarketDropsAPIClient.CompanyNews.Pagination) {
+        self.init(
+            found: model.found,
+            returned: model.returned,
+            limit: model.limit,
+            page: model.page
+        )
+    }
+}
+
+extension CompanyNews.Article {
+    init(model: MarketDropsAPIClient.CompanyNews.Article) {
+        self.init(
+            id: model.id,
+            title: model.title,
+            description: model.description,
+            snippet: model.snippet,
+            url: URL(string: model.url),
+            image: URL(string: model.image),
+            publishedAt: model.publishedAt,
+            source: model.source
+        )
+    }
+}
+
+extension CompanyNews {
+    init(model: MarketDropsAPIClient.CompanyNews) {
+        self.init(
+            pagination: Pagination(model: model.pagination),
+            articles: model.articles.map(Article.init)
         )
     }
 }

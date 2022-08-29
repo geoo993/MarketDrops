@@ -8,7 +8,11 @@
 "ipo_card__price" = "$ %@";
 
 "newsfeed__filingsSectionTitle" = "Filings";
+"newsfeed__newsSectionTitle" = "News";
+"newsfeed__filingsFootnote" = "Filed an %1$@ on %2$@";
 
 "error_alert_title" = "Hello 👋";
 "error_alert_description" = "Looks like Something went wrong.\n %@ \nPlease try again later!";
 "error_alert_cta" = "Ok";
+
+"image_loading__failed" = "Unable to load image";

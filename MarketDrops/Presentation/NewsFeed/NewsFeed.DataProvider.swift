@@ -17,6 +17,7 @@ extension NewsFeed {
     
     struct DataProvider {
         var filings: (String) -> AnyPublisher<[CompanyFiling], Error>
+        var news: (String) -> AnyPublisher<CompanyNews, Error>
     }
 }
 
@@ -30,6 +31,14 @@ extension NewsFeed.DataProvider {
                 )
             ) 
             .map{ $0.map(CompanyFiling.init) }
+            .mapError { NewsFeed.Error.apiError($0) }
+            .eraseToAnyPublisher()
+        },
+        news: { searchQuery in
+            DataController.shared.apiClient.execute(
+                request: FetchCompanyNewsRequest(searchQuery: searchQuery)
+            )
+            .map(CompanyNews.init)
             .mapError { NewsFeed.Error.apiError($0) }
             .eraseToAnyPublisher()
         }
