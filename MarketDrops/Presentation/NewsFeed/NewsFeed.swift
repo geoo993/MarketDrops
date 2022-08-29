@@ -44,7 +44,7 @@ enum NewsFeed {
                 .eraseToEffect()
 
         case let .didLoadFilings(.success(value)):
-            state.filings = value.isEmpty ? .idle : .loaded(value) 
+            state.filings = value.isEmpty ? .idle : .loaded(value)
             return .none
 
         case let .didLoadFilings(.failure(error)):

@@ -3,41 +3,31 @@ import MarketDropsDomain
 import MarketDropsDomainFixtures
 
 struct CardNewsView: View {
-    @ObservedObject var imageViewModel: ImageViewModel
+    let store: ImageLoadingStore
     @State var article: CompanyNews.Article
     
     var body: some View {
-        ZStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: UIConstants.cornerRadius)
-                .fill(Color.blue)
-            HStack {
-                Unwrap(article.image) { image in
-                    ImageView(viewModel: imageViewModel, imageURL: image)
-                        .frame(width: 120, height: 90)
-                }
-                VStack(alignment: .leading, spacing: UIConstants.spacing) {
-                    Text(article.title)
-                        .bold()
-                        .font(.subheadline)
-                        .foregroundColor(.white)
-                    Text(article.description)
-                        .font(.caption2)
-                        .foregroundColor(Color.white)
-                    Spacer()
-                }
+        HStack {
+            Unwrap(article.image) { image in
+                ImageView(store: store, imageUrl: image)
+                .frame(width: 120, height: 90)
             }
-            .padding(EdgeInsets(
-                top: UIConstants.padding,
-                leading: UIConstants.padding,
-                bottom: UIConstants.padding,
-                trailing: UIConstants.padding
-            ))
+            VStack(alignment: .leading, spacing: UIConstants.spacing) {
+                Text(article.title)
+                    .bold()
+                    .font(.subheadline)
+                    .foregroundColor(.white)
+                Text(article.description)
+                    .font(.caption2)
+                    .foregroundColor(Color.white)
+                Spacer()
+            }
         }
-    }
-}
-
-struct CardNewsView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardNewsView(imageViewModel: .init(), article: .fixture())
+        .padding(.all, UIConstants.padding)
+        .cardStyle(
+            primaryColor: Color("brandBlue"),
+            secondaryColor: Color("brandBlueDarker"),
+            radius: UIConstants.cornerRadius
+        )
     }
 }

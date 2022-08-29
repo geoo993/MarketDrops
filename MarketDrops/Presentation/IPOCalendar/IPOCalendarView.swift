@@ -24,9 +24,9 @@ struct IPOCalendarView: View {
                         .listRowBackground(self.color)
                         .listRowInsets(
                             EdgeInsets(
-                                top: UIConstants.padding,
+                                top: UIConstants.spacing,
                                 leading: UIConstants.padding,
-                                bottom: UIConstants.padding,
+                                bottom: UIConstants.spacing,
                                 trailing: UIConstants.padding
                             )
                         )

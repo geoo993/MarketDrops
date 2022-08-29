@@ -32,7 +32,7 @@ extension IpoCalendarRouter: Router {
                     }) {
                         Image(systemName: "goforward")
                     }
-                    .foregroundColor(.red)
+                    .foregroundColor(Color("brandPrimary"))
                 )
                 .navigationBarTitle("ipo_calendar__screen")
             }

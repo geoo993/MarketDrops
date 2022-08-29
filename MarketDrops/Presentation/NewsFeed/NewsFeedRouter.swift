@@ -32,7 +32,7 @@ extension NewsFeedRouter: Router {
                     }) {
                         Image(systemName: viewStore.favoured ? "heart.fill" : "heart")
                     }
-                    .foregroundColor(.red)
+                    .foregroundColor(Color("brandPrimary"))
                 )
                 .navigationBarTitle(viewStore.company?.name ?? viewStore.company?.symbol ?? "")
             }

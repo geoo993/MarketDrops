@@ -1,80 +1,90 @@
 import SwiftUI
 import Combine
 import MarketDropsAPIClient
+import ComposableArchitecture
 
-final class ImageViewModel: ObservableObject {
-    private var cancellables = Set<AnyCancellable>()
+typealias ImageLoadingStore = Store<ImageLoading.State, ImageLoading.Action>
+typealias ImageLoadingViewStore = ViewStore<ImageLoading.State, ImageLoading.Action>
 
-    func loadImage(
-        imageUrl: URL,
-        completion: @escaping (Result<UIImage, AnyError>) -> Void
-    ) {
-        DataController.shared.imageLoader.load(imageURL: imageUrl)
-            .mapError(AnyError.init)
-            .sinkToResult(completion)
-            .store(in: &cancellables)
+enum ImageLoading {
+    struct State: Equatable {
+        var image: Loading<UIImage> = .idle
+    }
+
+    enum Action: Equatable {
+        case fetchImage(URL)
+        case didLoad(Result<UIImage, AnyError>)
+    }
+
+    struct Environment {
+        let queue: AnySchedulerOf<DispatchQueue>
+    }
+    
+    static let reducer: Reducer<State, Action, Environment> = .init { state, action, environment in
+        switch action {
+        case let .fetchImage(url):
+            state.image = .loading(previous: nil)
+            return DataController.shared.imageLoader.load(imageURL: url)
+                .receive(on: environment.queue)
+                .mapError(AnyError.init)
+                .catchToEffect()
+                .map(Action.didLoad)
+                .eraseToEffect()
+            
+        case let .didLoad(result):
+            switch result {
+            case let .success(value):
+                state.image = .loaded(value)
+            case let .failure(error):
+                state.image = .error(error)
+            }
+            return .none
+        }
     }
 }
 
-
 struct ImageView: View {
-    private let viewModel: ImageViewModel
-    private let imageURL: URL
-    @State private var image: Loading<UIImage>
-    
-    init(viewModel: ImageViewModel, imageURL: URL, image: Loading<UIImage> = .idle) {
-        self.viewModel = viewModel
-        self.imageURL = imageURL
-        self._image = .init(initialValue: image)
+    private let store: ImageLoadingStore
+    private let imageUrl: URL
+
+    init(store: ImageLoadingStore, imageUrl: URL) {
+        self.store = store
+        self.imageUrl = imageUrl
     }
     
     var body: some View {
-        switch image {
-        case .idle:
-            idleView
-        case .loading:
-            loadingView
-        case let .loaded(image):
-            loadedView(image)
-        case let .error(error):
-            errorView(error)
-        }
-    }
-}
-
-private extension ImageView {
-    func loadImage() {
-        image = .loading(previous: nil)
-        viewModel.loadImage(imageUrl: imageURL) { result in
-            switch result {
-            case let .success(value):
-                image = .loaded(value)
-            case let .failure(error):
-                image = .error(AnyError(error))
+        WithViewStore(self.store) { viewStore in
+            switch viewStore.image {
+            case .idle:
+                idleView(viewStore)
+            case .loading:
+                loadingView
+            case let .loaded(image):
+                loadedView(image)
+            case let .error(error):
+                errorView(error)
             }
         }
     }
-}
 
-private extension ImageView {
-    var idleView: some View {
+    @ViewBuilder private func idleView(_ viewStore: ImageLoadingViewStore) -> some View {
         Text("").onAppear {
-            self.loadImage()
+            viewStore.send(.fetchImage(imageUrl))
         }
     }
     
-    var loadingView: some View {
+    private var loadingView: some View {
         ActivityIndicatorView(color: .gray, style: .medium)
     }
     
-    func errorView(_ error: Error) -> some View {
+    private func errorView(_ error: Error) -> some View {
         Text("image_loading__failed")
             .font(.footnote)
             .multilineTextAlignment(.center)
             .padding()
     }
     
-    func loadedView(_ uiImage: UIImage) -> some View {
+    private func loadedView(_ uiImage: UIImage) -> some View {
         Image(uiImage: uiImage)
             .resizable()
             .aspectRatio(contentMode: .fit)

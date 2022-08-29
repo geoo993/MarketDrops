@@ -6,9 +6,7 @@ struct CardFilingView: View {
     @State var filing: CompanyFiling
     
     var body: some View {
-        ZStack(alignment: .leading){
-            RoundedRectangle(cornerRadius: UIConstants.cornerRadius)
-                .fill(Color.blue)
+        HStack {
             VStack(alignment: .leading, spacing: UIConstants.spacing) {
                 Text(filing.symbol)
                     .foregroundColor(.white)
@@ -24,8 +22,14 @@ struct CardFilingView: View {
                         .lineLimit(1)
                 }
             }
-            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
+        .padding(.all, UIConstants.padding)
+        .cardStyle(
+            primaryColor: Color("brandBlue"),
+            secondaryColor: Color("brandBlueDarker"),
+            radius: UIConstants.cornerRadius
+        )
     }
 }
 

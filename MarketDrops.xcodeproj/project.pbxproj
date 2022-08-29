@@ -25,6 +25,8 @@
 		C7250DE228BD33BA0084060E /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7250DE128BD33BA0084060E /* ActivityIndicatorView.swift */; };
 		C7250DE428BD535A0084060E /* CardFilingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7250DE328BD535A0084060E /* CardFilingView.swift */; };
 		C7250DE628BD54060084060E /* CardNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7250DE528BD54060084060E /* CardNewsView.swift */; };
+		C734CBAD28BD580D003E45EF /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C734CBAC28BD580D003E45EF /* WebView.swift */; };
+		C734CBAF28BD5973003E45EF /* NewsFeedDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C734CBAE28BD5973003E45EF /* NewsFeedDetailView.swift */; };
 		C7518E9A28BCF7570046D2CC /* NewsFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7518E9928BCF7570046D2CC /* NewsFeedView.swift */; };
 		C7518E9C28BCF8380046D2CC /* IPOCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7518E9B28BCF8380046D2CC /* IPOCalendarView.swift */; };
 		C75C3C2C28B8E46E006C4DEB /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75C3C2B28B8E46E006C4DEB /* Room.swift */; };
@@ -83,6 +85,8 @@
 		C7250DE328BD535A0084060E /* CardFilingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFilingView.swift; sourceTree = "<group>"; };
 		C7250DE528BD54060084060E /* CardNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNewsView.swift; sourceTree = "<group>"; };
 		C728DDB328B102FC00326C47 /* SwiftExamplesPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SwiftExamplesPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C734CBAC28BD580D003E45EF /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		C734CBAE28BD5973003E45EF /* NewsFeedDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedDetailView.swift; sourceTree = "<group>"; };
 		C7518E9928BCF7570046D2CC /* NewsFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedView.swift; sourceTree = "<group>"; };
 		C7518E9B28BCF8380046D2CC /* IPOCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPOCalendarView.swift; sourceTree = "<group>"; };
 		C75C3C2B28B8E46E006C4DEB /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 				C7E8100C28BCD65100039E8D /* NewsFeed.swift */,
 				C7E8100E28BCD7E100039E8D /* NewsFeed.DataProvider.swift */,
 				C7518E9928BCF7570046D2CC /* NewsFeedView.swift */,
+				C734CBAE28BD5973003E45EF /* NewsFeedDetailView.swift */,
 			);
 			path = NewsFeed;
 			sourceTree = "<group>";
@@ -274,12 +279,13 @@
 			isa = PBXGroup;
 			children = (
 				C7C40FF428B549CF00B6663E /* Modifiers */,
+				C7250DE128BD33BA0084060E /* ActivityIndicatorView.swift */,
 				C7A7380728BB923C002CC2AF /* CardView.swift */,
 				C7250DE328BD535A0084060E /* CardFilingView.swift */,
 				C7250DE528BD54060084060E /* CardNewsView.swift */,
 				C7250DDF28BD327E0084060E /* ImageView.swift */,
 				C75C3C2B28B8E46E006C4DEB /* Room.swift */,
-				C7250DE128BD33BA0084060E /* ActivityIndicatorView.swift */,
+				C734CBAC28BD580D003E45EF /* WebView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -438,6 +444,7 @@
 				C75C3C3628B8ECF9006C4DEB /* TabRouting.swift in Sources */,
 				C7133FAA28BBFF7A004953C8 /* AnyError.swift in Sources */,
 				C7250DE628BD54060084060E /* CardNewsView.swift in Sources */,
+				C734CBAD28BD580D003E45EF /* WebView.swift in Sources */,
 				C72446CC28BB9CBE00E3390C /* LinearGradient.swift in Sources */,
 				C75C3C3F28B8F446006C4DEB /* FavouritesRouter.swift in Sources */,
 				C7518E9A28BCF7570046D2CC /* NewsFeedView.swift in Sources */,
@@ -461,6 +468,7 @@
 				C7CFDAE928B25132005D8E61 /* TabItem.swift in Sources */,
 				C7A7380C28BB955B002CC2AF /* CardStyle.swift in Sources */,
 				C75C3C2C28B8E46E006C4DEB /* Room.swift in Sources */,
+				C734CBAF28BD5973003E45EF /* NewsFeedDetailView.swift in Sources */,
 				C7250DE228BD33BA0084060E /* ActivityIndicatorView.swift in Sources */,
 				C7133F9B28BBB080004953C8 /* UIConstants.swift in Sources */,
 				C7CFDAE028B24BC4005D8E61 /* TabBarView.swift in Sources */,

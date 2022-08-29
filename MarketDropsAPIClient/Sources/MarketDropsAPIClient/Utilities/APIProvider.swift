@@ -17,9 +17,9 @@ extension APIProvider {
     var apiToken: String {
         switch self {
         case .finnhub:
-            return "bs8u7q7rh5re5dkf6kig"
+            return ""
         case .marketaux:
-            return "w43sj7tt6QU68bJmdXyvpgPSpQR3PijnlkxeGJc9"
+            return ""
         }
     }
 }

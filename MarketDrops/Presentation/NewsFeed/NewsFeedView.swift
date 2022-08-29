@@ -4,7 +4,6 @@ import MarketDropsCore
 
 struct NewsFeedView: View {
     @State var viewStore: NewsFeedViewStore
-    @ObservedObject var imageViewModel = ImageViewModel()
     @State var color: Color
     
     var body: some View {
@@ -12,9 +11,21 @@ struct NewsFeedView: View {
             Unwrap(viewStore.filings.loaded) { value in
                 Section {
                     ForEach(value) { filing in
-                        CardFilingView(filing: filing)
-                            .listRowSeparator(.hidden)
-                            .listPadding(first: value.first, current: filing)
+                        ZStack {
+                            CardFilingView(filing: filing)
+                            NavigationLink(
+                                destination: NewsFeedDetailView(
+                                    webPage: filing.reportUrl,
+                                    color: color
+                                )
+                            ) {
+                                EmptyView()
+                            }
+                            .opacity(0.0)
+                            .buttonStyle(PlainButtonStyle())
+                        }
+                        .listRowSeparator(.hidden)
+                        .listPadding(first: value.first, current: filing)
                     }
                     .listRowBackground(color)
                     .listRowInsets(.init())
@@ -28,9 +39,29 @@ struct NewsFeedView: View {
             Unwrap(viewStore.news.loaded) { value in
                 Section {
                     ForEach(value.articles) { article in
-                        CardNewsView(imageViewModel: imageViewModel, article: article)
-                            .listRowSeparator(.hidden)
-                            .listPadding(first: value.articles.first, current: article)
+                        ZStack {
+                            CardNewsView(
+                                store: .init(
+                                    initialState: .init(),
+                                    reducer: ImageLoading.reducer,
+                                    environment: .init(queue: .main)
+                                ),
+                                article: article
+                            )
+                            NavigationLink(
+                                destination: NewsFeedDetailView(
+                                    webPage: article.url,
+                                    color: color
+                                )
+                            ) {
+                                EmptyView()
+                            }
+                            .opacity(0.0)
+                            .buttonStyle(PlainButtonStyle())
+                        }
+                        .listRowSeparator(.hidden)
+                        .listPadding(first: value.articles.first, current: article)
+                        
                     }
                     .listRowBackground(color)
                     .listRowInsets(.init())
