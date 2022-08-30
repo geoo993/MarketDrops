@@ -4,15 +4,18 @@ import MarketDropsAPIClient
 
 extension IPOCalendar {
     init(model: MarketDropsAPIClient.IPOCalandar) {
-        self.init(companies: model.companies.map(IPOCalendar.Company.init))
+        self.init(
+            companies: model.companies.compactMap(IPOCalendar.Company.init)
+        )
     }
 }
 
 extension IPOCalendar.Company {
-    init(model: MarketDropsAPIClient.IPOCalandar.Company) {
+    init?(model: MarketDropsAPIClient.IPOCalandar.Company) {
+        guard let symbol = model.symbol else { return nil }
         self.init(
             name: model.name,
-            symbol: model.symbol,
+            symbol: symbol,
             date: model.date,
             status: .init(model.status, exchange: model.exchange),
             price: model.price

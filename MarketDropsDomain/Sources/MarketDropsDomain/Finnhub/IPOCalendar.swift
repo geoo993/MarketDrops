@@ -1,4 +1,5 @@
 import Foundation
+import MarketDropsCore
 
 public struct IPOCalendar: Equatable {
     public let companies: [Company]
@@ -10,22 +11,19 @@ public struct IPOCalendar: Equatable {
 
 public extension IPOCalendar {
     struct Company: Equatable, Identifiable {
-        public let id: String
         public let name: String
-        public let symbol: String?
+        public let symbol: String
         public let date: Date
         public let status: Status?
         public let price: String?
         
         public init(
-            id: String = UUID().uuidString,
             name: String,
-            symbol: String? = nil,
+            symbol: String,
             date: Date,
             status: Status?,
             price: String? = nil
         ) {
-            self.id = id
             self.name = name
             self.symbol = symbol
             self.date = date
@@ -36,6 +34,10 @@ public extension IPOCalendar {
 }
     
 public extension IPOCalendar.Company {
+    var id: String {
+        "\(symbol)-\(DateFormatter.date().string(from: date))"
+    }
+    
     enum Status: Equatable {
         case withdrawn
         case filed

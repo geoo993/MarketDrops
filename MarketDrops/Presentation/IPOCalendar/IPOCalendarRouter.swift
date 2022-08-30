@@ -20,7 +20,6 @@ extension IpoCalendarRouter: Router {
                 Room(color: self.color) {
                     IPOCalendarView(
                         store: self.store,
-                        viewStore: viewStore,
                         color: self.color
                     )
                 }

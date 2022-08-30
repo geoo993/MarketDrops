@@ -1,7 +1,5 @@
-import Foundation
 import SwiftUI
 import MarketDropsRouting
-import MarketDropsDomain
 import ComposableArchitecture
 
 final class NewsFeedRouter {
@@ -30,7 +28,7 @@ extension NewsFeedRouter: Router {
                         // TODO: haptics
                         viewStore.send(.didTapFavourite)
                     }) {
-                        Image(systemName: viewStore.favoured ? "heart.fill" : "heart")
+                        Image(systemName: viewStore.isFavoured ? "heart.fill" : "heart")
                     }
                     .foregroundColor(Color("brandPrimary"))
                 )

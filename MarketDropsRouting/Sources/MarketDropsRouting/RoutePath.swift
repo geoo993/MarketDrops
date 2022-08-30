@@ -35,10 +35,8 @@ extension RoutePath {
         else {
             return .ipoCalendar(nil)
         }
-        let id = query["id"] ?? ""
         return .ipoCalendar(.company(
             .init(
-                id: id,
                 name: "",
                 symbol: symbol,
                 date: dateValue,

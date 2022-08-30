@@ -23,14 +23,22 @@ extension TabBarRouter: Router {
                         return TabRouting(
                             item: item,
                             router: IpoCalendarRouter(
-                                store: store.scope(
+                                store: self.store.scope(
                                     state: \.ipoCalendar,
                                     action: TabBar.Action.ipoCalendar
                                 )
                             )
                         )
                     case .favourites:
-                        return TabRouting(item: item, router: FavouritesRouter())
+                        return TabRouting(
+                            item: item,
+                            router: FavouritesRouter(
+                                store: self.store.scope(
+                                    state: \.favourites,
+                                    action: TabBar.Action.favourites
+                                )
+                            )
+                        )
                     }
                 }
             )

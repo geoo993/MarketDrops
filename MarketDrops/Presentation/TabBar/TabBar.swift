@@ -9,15 +9,18 @@ enum TabBar {
     struct State: Equatable {
         var selectedTab: TabItem
         var ipoCalendar: IPOs.State
+        var favourites: Favourites.State
     }
 
     enum Action: Equatable {
         case ipoCalendar(IPOs.Action)
+        case favourites(Favourites.Action)
         case didSelectTab(TabItem)
         case open(URL)
     }
 
     struct Environment {
+        let iposDataProcider: IPOs.DataProvider
         let queue: AnySchedulerOf<DispatchQueue>
     }
     
@@ -27,16 +30,30 @@ enum TabBar {
             action: /Action.ipoCalendar,
             environment: {
                 .init(
+                    dataProvider: $0.iposDataProcider,
+                    queue: $0.queue
+                )
+            }
+        ),
+        Favourites.reducer.pullback(
+            state: \.favourites,
+            action: /Action.favourites,
+            environment: {
+                .init(
                     dataProvider: .live,
+                    iposDataProvider: $0.iposDataProcider,
                     queue: $0.queue
                 )
             }
         ),
         .init { state, action, environment in
             switch action {
-            case .ipoCalendar:
+            case .favourites:
                 return .none
                 
+            case let .ipoCalendar(.didLoad(result)):
+                return Effect(value: .favourites(.latest(result)))
+
             case let .didSelectTab(tab):
                 state.selectedTab = tab
                 return .none
@@ -54,6 +71,9 @@ enum TabBar {
                 case .unsupported, .none:
                     return .none
                 }
+                
+            default:
+                return .none
             }
         }
     )

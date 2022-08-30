@@ -12,7 +12,7 @@ enum NewsFeed {
         var filings: Loading<[CompanyFiling]> = .idle
         var news: Loading<CompanyNews> = .idle
         var alert: AlertState<Action>?
-        var favoured = false
+        var isFavoured = false
     }
 
     enum Action: Equatable {
@@ -32,11 +32,12 @@ enum NewsFeed {
     static let reducer: Reducer<State, Action, Environment> = .init { state, action, environment in
         switch action {
         case .fetchFilings:
-            state.alert = .none
-            state.filings = .loading(previous: .none)
             guard let symbol = state.company?.symbol else {
                 return Effect(value: .didLoadFilings(.success([])))
             }
+            state.alert = .none
+            state.filings = .loading(previous: .none)
+            state.isFavoured = environment.dataProvider.favoured(symbol)
             return environment.dataProvider.filings(symbol)
                 .receive(on: environment.queue)
                 .catchToEffect()
@@ -75,7 +76,10 @@ enum NewsFeed {
             return .none
             
         case .didTapFavourite:
-            state.favoured = !state.favoured
+            if let symbol = state.company?.symbol {
+                state.isFavoured = !state.isFavoured
+                environment.dataProvider.storeFavourite(symbol, state.isFavoured)
+            }
             return .none
 
         case .alertDismissed:

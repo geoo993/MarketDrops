@@ -5,34 +5,35 @@ import ComposableArchitecture
 
 struct IPOCalendarView: View {
     let store: IPOsStore
-    @State var viewStore: IPOsViewStore
     @State var color: Color
-    
+
     var body: some View {
-        VStack {
-            Unwrap(viewStore.calendar.loaded) { value in
-                List {
-                    ForEach(value.companies) { company in
-                        ZStack {
-                            CardView(item: company)
-                            CompanyNavigation(
-                                store: self.store,
-                                company: company
+        WithViewStore(self.store) { viewStore in
+            VStack {
+                Unwrap(viewStore.calendar.loaded) { value in
+                    List {
+                        ForEach(value.companies) { company in
+                            ZStack {
+                                CardView(item: company)
+                                CompanyNavigation(
+                                    store: self.store,
+                                    company: company
+                                )
+                            }
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(self.color)
+                            .listRowInsets(
+                                EdgeInsets(
+                                    top: UIConstants.spacing,
+                                    leading: UIConstants.padding,
+                                    bottom: UIConstants.spacing,
+                                    trailing: UIConstants.padding
+                                )
                             )
                         }
-                        .listRowSeparator(.hidden)
-                        .listRowBackground(self.color)
-                        .listRowInsets(
-                            EdgeInsets(
-                                top: UIConstants.spacing,
-                                leading: UIConstants.padding,
-                                bottom: UIConstants.spacing,
-                                trailing: UIConstants.padding
-                            )
-                        )
                     }
+                    .listStyle(PlainListStyle())
                 }
-                .listStyle(PlainListStyle())
             }
         }
     }

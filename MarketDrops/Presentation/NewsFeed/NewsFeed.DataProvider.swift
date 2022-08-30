@@ -18,6 +18,8 @@ extension NewsFeed {
     struct DataProvider {
         var filings: (String) -> AnyPublisher<[CompanyFiling], Error>
         var news: (String) -> AnyPublisher<CompanyNews, Error>
+        var favoured: (String) -> Bool
+        var storeFavourite: (String, Bool) -> Void
     }
 }
 
@@ -41,6 +43,10 @@ extension NewsFeed.DataProvider {
             .map(CompanyNews.init)
             .mapError { NewsFeed.Error.apiError($0) }
             .eraseToAnyPublisher()
+        }, favoured: { symbol in
+            UserPreferences.shared.isFavourite(for: symbol)
+        }, storeFavourite: { (symbol, isFavoured) in
+            UserPreferences.shared.add(symbol: symbol, isFavoured: isFavoured)
         }
     )
 }
