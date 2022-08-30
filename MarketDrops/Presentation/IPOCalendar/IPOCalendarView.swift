@@ -6,33 +6,46 @@ import ComposableArchitecture
 struct IPOCalendarView: View {
     let store: IPOsStore
     @State var color: Color
+    @State var emptyStateTitle: String?
 
     var body: some View {
         WithViewStore(self.store) { viewStore in
             VStack {
-                Unwrap(viewStore.calendar.loaded) { value in
-                    List {
-                        ForEach(value.companies) { company in
-                            ZStack {
-                                CardView(item: company)
-                                CompanyNavigation(
-                                    store: self.store,
-                                    company: company
+                OnActive(for: viewStore.companiesAvailable) {
+                    Unwrap(viewStore.calendar.loaded) { value in
+                        List {
+                            ForEach(value.companies) { company in
+                                ZStack {
+                                    CardView(item: company)
+                                    CompanyNavigation(
+                                        store: self.store,
+                                        company: company
+                                    )
+                                }
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(self.color)
+                                .listRowInsets(
+                                    EdgeInsets(
+                                        top: UIConstants.spacing,
+                                        leading: UIConstants.padding,
+                                        bottom: UIConstants.spacing,
+                                        trailing: UIConstants.padding
+                                    )
                                 )
                             }
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(self.color)
-                            .listRowInsets(
-                                EdgeInsets(
-                                    top: UIConstants.spacing,
-                                    leading: UIConstants.padding,
-                                    bottom: UIConstants.spacing,
-                                    trailing: UIConstants.padding
-                                )
-                            )
                         }
+                        .listStyle(PlainListStyle())
                     }
-                    .listStyle(PlainListStyle())
+                } elseContent: {
+                    Unwrap(emptyStateTitle) { value in
+                        VStack(alignment: .center) {
+                            Text(value)
+                                .font(.title3)
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color("brandPrimary"))
+                        }
+                        .padding(.horizontal)
+                    }
                 }
             }
         }

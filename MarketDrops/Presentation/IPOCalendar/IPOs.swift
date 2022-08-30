@@ -12,6 +12,12 @@ enum IPOs {
         var route: IpoRoutePath?
         var calendar: Loading<IPOCalendar> = .idle
         var alert: AlertState<Action>?
+        var companiesAvailable: Bool {
+            guard let companies = calendar.loaded?.companies else {
+                return false
+            }
+            return !companies.isEmpty
+        }
     }
 
     enum Action: Equatable {
@@ -51,6 +57,9 @@ enum IPOs {
                     .eraseToEffect()
         
             case let .didSelectRoute(isActive, company):
+                if isActive {
+                    HapticFeedback.selection.play()
+                }
                 return Effect(value: .onNavigate(isActive ? .company(company) : nil))
                 
             case let .onNavigate(value):

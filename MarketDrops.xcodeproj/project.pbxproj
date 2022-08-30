@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C708378028BE8EAD005A042A /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C708377F28BE8EAD005A042A /* HapticFeedback.swift */; };
+		C708378228BE9988005A042A /* OnActive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C708378128BE9988005A042A /* OnActive.swift */; };
 		C71115B128BD7C8C0042E8C3 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71115B028BD7C8C0042E8C3 /* UserPreferences.swift */; };
 		C7133F9B28BBB080004953C8 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7133F9A28BBB080004953C8 /* UIConstants.swift */; };
 		C7133F9D28BBB2A0004953C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7133F9C28BBB2A0004953C8 /* Localizable.strings */; };
@@ -74,6 +76,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C708377F28BE8EAD005A042A /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
+		C708378128BE9988005A042A /* OnActive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnActive.swift; sourceTree = "<group>"; };
 		C71115B028BD7C8C0042E8C3 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		C7133F9A28BBB080004953C8 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		C7133F9C28BBB2A0004953C8 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 				C7133FA928BBFF7A004953C8 /* AnyError.swift */,
 				C7CB54D628BD1845001D9DB2 /* AlertState.swift */,
 				C71115B028BD7C8C0042E8C3 /* UserPreferences.swift */,
+				C708377F28BE8EAD005A042A /* HapticFeedback.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 				C723436A28B96C1200CC1979 /* NavigationLink.swift */,
 				C7C40FF528B549E000B6663E /* Unwrap.swift */,
 				C7250DDD28BD2AE30084060E /* ListPadding.swift */,
+				C708378128BE9988005A042A /* OnActive.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -469,6 +475,7 @@
 			files = (
 				C75C3C3C28B8F432006C4DEB /* IPOCalendarRouter.swift in Sources */,
 				C7133FA228BBDE77004953C8 /* IPOs.swift in Sources */,
+				C708378028BE8EAD005A042A /* HapticFeedback.swift in Sources */,
 				C7250DE028BD327E0084060E /* ImageView.swift in Sources */,
 				C75C3C3628B8ECF9006C4DEB /* TabRouting.swift in Sources */,
 				C7133FAA28BBFF7A004953C8 /* AnyError.swift in Sources */,
@@ -506,6 +513,7 @@
 				C7133F9B28BBB080004953C8 /* UIConstants.swift in Sources */,
 				C7CFDAE028B24BC4005D8E61 /* TabBarView.swift in Sources */,
 				C7E8100D28BCD65100039E8D /* NewsFeed.swift in Sources */,
+				C708378228BE9988005A042A /* OnActive.swift in Sources */,
 				C79D739628B0DCCD004266CF /* MarketDropsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

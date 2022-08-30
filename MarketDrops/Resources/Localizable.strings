@@ -18,3 +18,4 @@
 "image_loading__failed" = "Unable to load image";
 
 "favourites__screen" = "Favourites";
+"favourites__emptyStateTitle" = "Select your favourite symbol from the IPO Calendar.";

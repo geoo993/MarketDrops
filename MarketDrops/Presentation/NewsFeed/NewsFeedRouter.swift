@@ -25,7 +25,7 @@ extension NewsFeedRouter: Router {
                 .alert(self.store.scope(state: \.alert), dismiss: .alertDismissed)
                 .navigationBarItems(trailing:
                     Button(action: {
-                        // TODO: haptics
+                        HapticFeedback.tap.play()
                         viewStore.send(.didTapFavourite)
                     }) {
                         Image(systemName: viewStore.isFavoured ? "heart.fill" : "heart")

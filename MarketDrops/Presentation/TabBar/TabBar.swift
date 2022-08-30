@@ -55,6 +55,7 @@ enum TabBar {
                 return Effect(value: .favourites(.latest(result)))
 
             case let .didSelectTab(tab):
+                HapticFeedback.selection.play()
                 state.selectedTab = tab
                 return .none
                 

@@ -22,7 +22,8 @@ extension FavouritesRouter: Router {
                             state: \.ipoCalendar,
                             action: Favourites.Action.ipoCalendar
                         ),
-                        color: self.color
+                        color: self.color,
+                        emptyStateTitle: "favourites__emptyStateTitle".localized
                     )
                 }
                 .navigationBarTitle("favourites__screen")

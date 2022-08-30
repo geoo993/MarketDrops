@@ -26,7 +26,7 @@ extension IpoCalendarRouter: Router {
                 .alert(self.store.scope(state: \.alert), dismiss: .alertDismissed)
                 .navigationBarItems(trailing:
                     Button(action: {
-                        // TODO: haptics
+                        HapticFeedback.tap.play()
                         viewStore.send(.fetchIpoCalendar)
                     }) {
                         Image(systemName: "goforward")
