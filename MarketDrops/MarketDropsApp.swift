@@ -17,7 +17,7 @@ struct MarketDropsApp: App {
                 ),
                 reducer: TabBar.reducer,
                 environment: .init(
-                    iposDataProcider: .live,
+                    iposDataProvider: .live,
                     queue: .main
                 )
             )

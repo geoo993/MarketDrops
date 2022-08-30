@@ -40,7 +40,7 @@
 		C79D739628B0DCCD004266CF /* MarketDropsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79D739528B0DCCD004266CF /* MarketDropsApp.swift */; };
 		C79D739A28B0DCCF004266CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C79D739928B0DCCF004266CF /* Assets.xcassets */; };
 		C79D739D28B0DCCF004266CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C79D739C28B0DCCF004266CF /* Preview Assets.xcassets */; };
-		C79D73A728B0DCCF004266CF /* MarketDropsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79D73A628B0DCCF004266CF /* MarketDropsTests.swift */; };
+		C79D73A728B0DCCF004266CF /* NewsFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79D73A628B0DCCF004266CF /* NewsFeedTests.swift */; };
 		C7A7380828BB923C002CC2AF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A7380728BB923C002CC2AF /* CardView.swift */; };
 		C7A7380C28BB955B002CC2AF /* CardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A7380B28BB955B002CC2AF /* CardStyle.swift */; };
 		C7A9A18528B7E73200399F4C /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = C7A9A18428B7E73200399F4C /* ComposableArchitecture */; };
@@ -57,6 +57,10 @@
 		C7D3147028B0E87E006B036E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7D3146F28B0E87E006B036E /* LaunchScreen.storyboard */; };
 		C7E8100D28BCD65100039E8D /* NewsFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E8100C28BCD65100039E8D /* NewsFeed.swift */; };
 		C7E8100F28BCD7E100039E8D /* NewsFeed.DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E8100E28BCD7E100039E8D /* NewsFeed.DataProvider.swift */; };
+		C7F6953328BE5279001DA483 /* ImageLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F6953228BE5279001DA483 /* ImageLoading.swift */; };
+		C7F6953528BE66F3001DA483 /* IPOsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F6953428BE66F3001DA483 /* IPOsTests.swift */; };
+		C7F6953728BE6E58001DA483 /* FavouritesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F6953628BE6E58001DA483 /* FavouritesTests.swift */; };
+		C7F6953928BE7612001DA483 /* TabBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F6953828BE7612001DA483 /* TabBarTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,7 +110,7 @@
 		C79D739928B0DCCF004266CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C79D739C28B0DCCF004266CF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C79D73A228B0DCCF004266CF /* MarketDropsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarketDropsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C79D73A628B0DCCF004266CF /* MarketDropsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDropsTests.swift; sourceTree = "<group>"; };
+		C79D73A628B0DCCF004266CF /* NewsFeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedTests.swift; sourceTree = "<group>"; };
 		C7A7380728BB923C002CC2AF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		C7A7380B28BB955B002CC2AF /* CardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStyle.swift; sourceTree = "<group>"; };
 		C7A7380D28BB974A002CC2AF /* MarketDropsDomain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MarketDropsDomain; sourceTree = "<group>"; };
@@ -122,6 +126,10 @@
 		C7D3146F28B0E87E006B036E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7E8100C28BCD65100039E8D /* NewsFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeed.swift; sourceTree = "<group>"; };
 		C7E8100E28BCD7E100039E8D /* NewsFeed.DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeed.DataProvider.swift; sourceTree = "<group>"; };
+		C7F6953228BE5279001DA483 /* ImageLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoading.swift; sourceTree = "<group>"; };
+		C7F6953428BE66F3001DA483 /* IPOsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPOsTests.swift; sourceTree = "<group>"; };
+		C7F6953628BE6E58001DA483 /* FavouritesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTests.swift; sourceTree = "<group>"; };
+		C7F6953828BE7612001DA483 /* TabBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,7 +267,10 @@
 		C79D73A528B0DCCF004266CF /* MarketDropsTests */ = {
 			isa = PBXGroup;
 			children = (
-				C79D73A628B0DCCF004266CF /* MarketDropsTests.swift */,
+				C79D73A628B0DCCF004266CF /* NewsFeedTests.swift */,
+				C7F6953428BE66F3001DA483 /* IPOsTests.swift */,
+				C7F6953628BE6E58001DA483 /* FavouritesTests.swift */,
+				C7F6953828BE7612001DA483 /* TabBarTests.swift */,
 			);
 			path = MarketDropsTests;
 			sourceTree = "<group>";
@@ -292,7 +303,6 @@
 				C7A7380728BB923C002CC2AF /* CardView.swift */,
 				C7250DE328BD535A0084060E /* CardFilingView.swift */,
 				C7250DE528BD54060084060E /* CardNewsView.swift */,
-				C7250DDF28BD327E0084060E /* ImageView.swift */,
 				C75C3C2B28B8E46E006C4DEB /* Room.swift */,
 				C734CBAC28BD580D003E45EF /* WebView.swift */,
 			);
@@ -306,6 +316,7 @@
 				C75C3C2D28B8E6E4006C4DEB /* IPOCalendar */,
 				C766657C28BA2280005F0156 /* Favourites */,
 				C766657D28BA228D005F0156 /* NewsFeed */,
+				C7F6953128BE524B001DA483 /* ImageLoading */,
 				C7CFDADE28B24B9D005D8E61 /* Views */,
 			);
 			path = Presentation;
@@ -332,6 +343,15 @@
 				C7CFDAE228B24C3A005D8E61 /* TabBarRouter.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		C7F6953128BE524B001DA483 /* ImageLoading */ = {
+			isa = PBXGroup;
+			children = (
+				C7250DDF28BD327E0084060E /* ImageView.swift */,
+				C7F6953228BE5279001DA483 /* ImageLoading.swift */,
+			);
+			path = ImageLoading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -469,6 +489,7 @@
 				C7133FA628BBFC07004953C8 /* DataController.swift in Sources */,
 				C7250DDE28BD2AE30084060E /* ListPadding.swift in Sources */,
 				C7133FA028BBB3DB004953C8 /* Localisation.swift in Sources */,
+				C7F6953328BE5279001DA483 /* ImageLoading.swift in Sources */,
 				C7CFDAE728B2504F005D8E61 /* TabBar.swift in Sources */,
 				C7518E9C28BCF8380046D2CC /* IPOCalendarView.swift in Sources */,
 				C7CFDAE328B24C3A005D8E61 /* TabBarRouter.swift in Sources */,
@@ -493,7 +514,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C79D73A728B0DCCF004266CF /* MarketDropsTests.swift in Sources */,
+				C7F6953728BE6E58001DA483 /* FavouritesTests.swift in Sources */,
+				C7F6953528BE66F3001DA483 /* IPOsTests.swift in Sources */,
+				C79D73A728B0DCCF004266CF /* NewsFeedTests.swift in Sources */,
+				C7F6953928BE7612001DA483 /* TabBarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -773,8 +797,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
 			requirement = {
-				kind = exactVersion;
-				version = 0.39.1;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.39.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

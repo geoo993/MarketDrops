@@ -7,7 +7,7 @@ extension CompanyFiling {
         symbol: String = "AAPL",
         cik: String = "1712762",
         form: String = "S1",
-        date: Date = .init(),
+        date: Date = Date(timeIntervalSince1970: 0),
         reportUrl: URL? = nil,
         filingUrl: URL? = nil
     ) -> Self {

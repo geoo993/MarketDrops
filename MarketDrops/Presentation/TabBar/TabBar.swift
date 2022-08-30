@@ -7,7 +7,7 @@ typealias TabBarViewStore = ViewStore<TabBar.State, TabBar.Action>
 
 enum TabBar {
     struct State: Equatable {
-        var selectedTab: TabItem
+        var selectedTab: TabItem = .ipos
         var ipoCalendar: IPOs.State
         var favourites: Favourites.State
     }
@@ -20,7 +20,7 @@ enum TabBar {
     }
 
     struct Environment {
-        let iposDataProcider: IPOs.DataProvider
+        let iposDataProvider: IPOs.DataProvider
         let queue: AnySchedulerOf<DispatchQueue>
     }
     
@@ -30,7 +30,7 @@ enum TabBar {
             action: /Action.ipoCalendar,
             environment: {
                 .init(
-                    dataProvider: $0.iposDataProcider,
+                    dataProvider: $0.iposDataProvider,
                     queue: $0.queue
                 )
             }
@@ -41,7 +41,7 @@ enum TabBar {
             environment: {
                 .init(
                     dataProvider: .live,
-                    iposDataProvider: $0.iposDataProcider,
+                    iposDataProvider: $0.iposDataProvider,
                     queue: $0.queue
                 )
             }

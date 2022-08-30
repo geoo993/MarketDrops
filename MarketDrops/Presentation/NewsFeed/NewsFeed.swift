@@ -71,7 +71,7 @@ enum NewsFeed {
             return .none
 
         case let .didLoadNews(.failure(error)):
-            state.filings = .error(AnyError(error))
+            state.news = .error(AnyError(error))
             state.alert = .errorAlert(error.errorDescription ?? "")
             return .none
             

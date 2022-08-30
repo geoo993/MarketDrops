@@ -4,7 +4,7 @@ import MarketDropsDomain
 extension CompanyNews {
     public static func fixture(
         pagination: Pagination = .fixture(),
-        articles: [Article] = []
+        articles: [Article] = [.fixture()]
     ) -> Self {
         .init(pagination: pagination, articles: articles)
     }
@@ -24,7 +24,7 @@ extension CompanyNews.Article {
         snippet: String = "Apple new iPhone",
         url: URL? = URL(string: "https://investmentu.com/hempacco-ipo/")!,
         image: URL? = URL(string: "https://investmentu.com/wp-content/uploads/2022/08/hempacco-ipo.jpg")!,
-        publishedAt: Date = .init(),
+        publishedAt: Date = Date(timeIntervalSince1970: 0),
         source: String = "The republic"
     ) -> Self {
         .init(
