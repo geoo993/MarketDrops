@@ -1,15 +1,23 @@
 import Foundation
 import UIKit
 
-final class ImageCache {
+public protocol ImageCaching {
+    func image(for url: URL) -> UIImage?
+    func insert(_ image: UIImage?, for url: URL)
+    func remove(for url: URL)
+}
+
+public final class ImageCache: ImageCaching {
     private var cache = NSCache<AnyObject, UIImage>()
     private let lock = NSLock()
+    
+    public init() {}
  
-    func image(for url: URL) -> UIImage? {
+    public func image(for url: URL) -> UIImage? {
         cache.object(forKey: url as AnyObject)
     }
     
-    func insert(_ image: UIImage?, for url: URL) {
+    public func insert(_ image: UIImage?, for url: URL) {
         guard let image = image else {
             remove(for: url)
             return
@@ -19,7 +27,7 @@ final class ImageCache {
         lock.unlock()
     }
     
-    func remove(for url: URL) {
+    public func remove(for url: URL) {
         lock.lock()
         cache.removeObject(forKey: url as AnyObject)
         lock.unlock()

@@ -78,10 +78,6 @@ extension CompanyFiling {
             filingUrl: model.filingUrl.toUrl
         )
     }
-    
-    var filingDescription: String {
-        "newsfeed__filingsFootnote".localized(arguments: form ?? "", date.formatted)
-    }
 }
 
 extension CompanyNews.Pagination {

@@ -32,12 +32,7 @@ enum ImageLoading {
                 .eraseToEffect()
             
         case let .didLoad(result):
-            switch result {
-            case let .success(value):
-                state.image = .loaded(value)
-            case let .failure(error):
-                state.image = .error(error)
-            }
+            state.image = Loading.from(result: result)
             return .none
         }
     }
@@ -74,7 +69,7 @@ struct ImageView: View {
     }
     
     private var loadingView: some View {
-        ActivityIndicatorView(color: .gray, style: .medium)
+        ActivityIndicatorView(color: .white, style: .medium)
     }
     
     private func errorView(_ error: Error) -> some View {

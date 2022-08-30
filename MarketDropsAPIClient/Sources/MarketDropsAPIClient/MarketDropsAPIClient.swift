@@ -64,7 +64,7 @@ extension MarketDropsAPIClient: URLRequestable {
             guard let body = parameters else { return }
             let jsonData = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
             request.httpBody = jsonData
-            if request.value(forHTTPHeaderField: "Content-Type") == nil {
+            if request.value(forHTTPHeaderField: "Content-Type").isNil {
                 request.setValue("application/json charset=utf-8", forHTTPHeaderField: "Content-Type")
             }
         } catch {

@@ -4,13 +4,15 @@ import Combine
 public struct ImageLoader {
     private let session: HTTPSession
     private let queue: DispatchQueue
-    private let imageCache = ImageCache()
+    private let imageCache: ImageCaching
     
     public init(
         session: HTTPSession = URLSession.shared,
+        imageCache: ImageCaching = ImageCache(),
         queue: DispatchQueue = .main
     ) {
         self.session = session
+        self.imageCache = imageCache
         self.queue = queue
     }
     

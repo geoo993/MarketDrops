@@ -26,7 +26,7 @@ final class DeeplinkParserTests: XCTestCase {
     }
     
     func test_newsfeedDeeplink() throws {
-        let url = try XCTUnwrap(URL(string: "applink:///ipo?id=abcde&symbol=HPCO&date=2022-08-30&status=expected"))
+        let url = try XCTUnwrap(URL(string: "applink:///ipo?symbol=HPCO&date=2022-08-30&status=expected"))
         let parser = DeeplinkParser(url: url)
         let routeData = try XCTUnwrap(RouteData(deeplinkParser: parser))
         let date = try XCTUnwrap(DateFormatter.date().date(from: "2022-08-30"))
@@ -34,7 +34,6 @@ final class DeeplinkParserTests: XCTestCase {
             routeData.path,
             .ipoCalendar(.company(
                 .init(
-                    id: "abcde",
                     name: "",
                     symbol: "HPCO",
                     date: date,

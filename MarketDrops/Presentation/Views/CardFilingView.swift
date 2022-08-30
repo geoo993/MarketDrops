@@ -15,8 +15,8 @@ struct CardFilingView: View {
                 Text(filing.accessNumber)
                     .foregroundColor(.white)
                     .font(.subheadline)
-                Unwrap(filing.form) { _ in
-                    Text(filing.filingDescription)
+                Unwrap(filing.form) { value in
+                    Text("newsfeed__filingsFootnote".localized(arguments: value, filing.date.formatted))
                         .foregroundColor(.white)
                         .font(.footnote)
                         .lineLimit(1)
