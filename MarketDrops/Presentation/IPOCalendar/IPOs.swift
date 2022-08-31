@@ -57,9 +57,6 @@ enum IPOs {
                     .eraseToEffect()
         
             case let .didSelectRoute(isActive, company):
-                if isActive {
-                    HapticFeedback.selection.play()
-                }
                 return Effect(value: .onNavigate(isActive ? .company(company) : nil))
                 
             case let .onNavigate(value):
@@ -72,6 +69,7 @@ enum IPOs {
                 return .none
                 
             case let .didLoad(.failure(error)):
+                HapticFeedback.failure.play()
                 state.calendar = .error(AnyError(error))
                 state.alert = .errorAlert(error.errorDescription ?? "")
                 return .none

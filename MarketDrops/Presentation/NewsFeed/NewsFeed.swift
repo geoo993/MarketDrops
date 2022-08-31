@@ -49,6 +49,7 @@ enum NewsFeed {
             return .none
 
         case let .didLoadFilings(.failure(error)):
+            HapticFeedback.failure.play()
             state.filings = .error(AnyError(error))
             state.alert = .errorAlert(error.errorDescription ?? "")
             return .none
@@ -71,6 +72,7 @@ enum NewsFeed {
             return .none
 
         case let .didLoadNews(.failure(error)):
+            HapticFeedback.failure.play()
             state.news = .error(AnyError(error))
             state.alert = .errorAlert(error.errorDescription ?? "")
             return .none

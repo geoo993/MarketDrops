@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,7 +18,6 @@
 		C7133FA628BBFC07004953C8 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7133FA528BBFC07004953C8 /* DataController.swift */; };
 		C7133FA828BBFF5B004953C8 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7133FA728BBFF5B004953C8 /* Loading.swift */; };
 		C7133FAA28BBFF7A004953C8 /* AnyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7133FA928BBFF7A004953C8 /* AnyError.swift */; };
-		C723436C28B96C1300CC1979 /* NavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = C723436A28B96C1200CC1979 /* NavigationLink.swift */; };
 		C723436E28B96C1A00CC1979 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C723436D28B96C1A00CC1979 /* Binding.swift */; };
 		C72446CC28BB9CBE00E3390C /* LinearGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72446CB28BB9CBE00E3390C /* LinearGradient.swift */; };
 		C72446CE28BB9DCD00E3390C /* MarketDropsDomain in Frameworks */ = {isa = PBXBuildFile; productRef = C72446CD28BB9DCD00E3390C /* MarketDropsDomain */; };
@@ -88,7 +87,6 @@
 		C7133FA728BBFF5B004953C8 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		C7133FA928BBFF7A004953C8 /* AnyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyError.swift; sourceTree = "<group>"; };
 		C723436828B96B6F00CC1979 /* MarketDropsCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MarketDropsCore; sourceTree = "<group>"; };
-		C723436A28B96C1200CC1979 /* NavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLink.swift; sourceTree = "<group>"; };
 		C723436D28B96C1A00CC1979 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		C72446CB28BB9CBE00E3390C /* LinearGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearGradient.swift; sourceTree = "<group>"; };
 		C7250DDD28BD2AE30084060E /* ListPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPadding.swift; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 				C723436D28B96C1A00CC1979 /* Binding.swift */,
 				C7A7380B28BB955B002CC2AF /* CardStyle.swift */,
 				C72446CB28BB9CBE00E3390C /* LinearGradient.swift */,
-				C723436A28B96C1200CC1979 /* NavigationLink.swift */,
 				C7C40FF528B549E000B6663E /* Unwrap.swift */,
 				C7250DDD28BD2AE30084060E /* ListPadding.swift */,
 				C708378128BE9988005A042A /* OnActive.swift */,
@@ -426,7 +423,7 @@
 				};
 			};
 			buildConfigurationList = C79D738D28B0DCCD004266CF /* Build configuration list for PBXProject "MarketDrops" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -487,7 +484,6 @@
 				C7518E9A28BCF7570046D2CC /* NewsFeedView.swift in Sources */,
 				C7C40FF628B549E000B6663E /* Unwrap.swift in Sources */,
 				C77B3E9D28BB9F2100186DB0 /* Domain+Ext.swift in Sources */,
-				C723436C28B96C1300CC1979 /* NavigationLink.swift in Sources */,
 				C75C3C4628B9154F006C4DEB /* NewsFeedRouter.swift in Sources */,
 				C7250DE428BD535A0084060E /* CardFilingView.swift in Sources */,
 				C7133FA828BBFF5B004953C8 /* Loading.swift in Sources */,
@@ -659,10 +655,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MarketDrops/Preview Content\"";
-				DEVELOPMENT_TEAM = TTRX47ZAU4;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = TTRX47ZAU4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarketDrops/Resources/Info.plist;
@@ -677,8 +675,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "geo-games.com.MarketDrops";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.geo-games.MarketDrops";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MarketDrops Provisioning Profile";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -693,10 +693,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MarketDrops/Preview Content\"";
-				DEVELOPMENT_TEAM = TTRX47ZAU4;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = TTRX47ZAU4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarketDrops/Resources/Info.plist;
@@ -711,8 +713,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "geo-games.com.MarketDrops";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.geo-games.MarketDrops";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MarketDrops Provisioning Profile";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

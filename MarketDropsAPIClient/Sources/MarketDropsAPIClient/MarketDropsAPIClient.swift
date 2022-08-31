@@ -37,7 +37,7 @@ extension MarketDropsAPIClient: URLRequestable {
         }
     }
 
-    private func request(from endPoint: any HTTPRequest) throws -> URLRequest {
+    private func request<T: HTTPRequest>(from endPoint: T) throws -> URLRequest {
         guard
             let url = endPoint.baseUrl,
             var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)

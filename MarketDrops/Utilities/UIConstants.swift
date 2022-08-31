@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 enum UIConstants {
     static let cornerRadius: CGFloat = 10.0

@@ -59,13 +59,24 @@ struct CompanyNavigation: View {
     var body: some View {
         WithViewStore(self.store) { viewStore in
             NavigationLink(
-                unwrap: viewStore.binding(get: \.route, send: IPOs.Action.onNavigate),
-                case: /IpoRoutePath.company,
-                onNavigate: {
-                    // TODO: haptics
-                    viewStore.send(.didSelectRoute($0, company)) }
-                ,
-                destination: { _ in
+                isActive: .init(
+                    get: {
+                        guard
+                            let route = viewStore.route,
+                            case let .company(value) = route,
+                            company == value
+                        else { return false }
+                        return true
+                    },
+                    set: {
+                        if $0 {
+                            HapticFeedback.selection.play()
+                        }
+                        viewStore.send(.didSelectRoute($0, company))
+                    }
+                )
+            ) {
+                if let _ = viewStore.binding(get: \.route, send: IPOs.Action.onNavigate).case(/IpoRoutePath.company) {
                     NewsFeedRouter(
                         store: store.scope(
                             state: \.newsfeed,
@@ -73,7 +84,7 @@ struct CompanyNavigation: View {
                         )
                     ).contentView
                 }
-            ) {
+            } label: {
                 EmptyView()
             }
             .opacity(0.0)
