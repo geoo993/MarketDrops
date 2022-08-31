@@ -4,6 +4,11 @@ It has 2 Tabs, one for the list of IPO's and the second for the user Favourites 
 
 Overal this project aims to demostrate many iOS app development techniques and features.
 
+<img src="https://user-images.githubusercontent.com/14023259/187657910-18ffdfd7-d568-498b-9e34-053f1167d6fa.png" width=300>
+<img src="https://user-images.githubusercontent.com/14023259/187658089-1d617ee0-c5e6-42ac-b46f-2bb576e472a4.png" width=300>
+<img src="https://user-images.githubusercontent.com/14023259/187658200-73c38bec-3c00-4d28-8a24-2ec9dc81a585.png" width=300>
+
+
 
 ## What is Featured
 
