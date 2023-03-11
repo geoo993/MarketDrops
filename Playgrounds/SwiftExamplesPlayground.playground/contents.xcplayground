@@ -6,5 +6,6 @@
         <page name='SplashScreenEngineGroupedByPriority'/>
         <page name='SplashScreenEngineGroupedByRank'/>
         <page name='Combine Operators'/>
+        <page name='PostComments'/>
     </pages>
 </playground>

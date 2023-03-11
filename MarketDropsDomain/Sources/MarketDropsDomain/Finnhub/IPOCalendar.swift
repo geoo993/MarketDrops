@@ -10,7 +10,7 @@ public struct IPOCalendar: Equatable {
 }
 
 public extension IPOCalendar {
-    struct Company: Equatable, Identifiable {
+    struct Company: Hashable, Identifiable {
         public let name: String
         public let symbol: String
         public let date: Date
@@ -34,6 +34,10 @@ public extension IPOCalendar {
 }
     
 public extension IPOCalendar.Company {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
     var id: String {
         "\(symbol)-\(DateFormatter.date().string(from: date))"
     }

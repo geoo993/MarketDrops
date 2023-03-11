@@ -17,23 +17,25 @@ extension IpoCalendarRouter: Router {
     var contentView: AnyView {
         AnyView (
             WithViewStore(self.store) { viewStore in
-                Room(color: self.color) {
-                    IPOCalendarView(
-                        store: self.store,
-                        color: self.color
-                    )
-                }
-                .alert(self.store.scope(state: \.alert), dismiss: .alertDismissed)
-                .navigationBarItems(trailing:
-                    Button(action: {
+                NavigationStack {
+                    Room(color: self.color) {
+                        IPOCalendarView(
+                            store: self.store,
+                            color: self.color
+                        )
+                    }
+                    .alert(self.store.scope(state: \.alert), dismiss: .alertDismissed)
+                    .navigationBarItems(trailing:
+                                            Button(action: {
                         HapticFeedback.tap.play()
                         viewStore.send(.fetchIpoCalendar)
                     }) {
                         Image(systemName: "goforward")
                     }
-                    .foregroundColor(Color("brandPrimary"))
-                )
-                .navigationBarTitle("ipo_calendar__screen")
+                        .foregroundColor(Color("brandPrimary"))
+                    )
+                    .navigationBarTitle("ipo_calendar__screen")
+                }
             }
         )
     }
