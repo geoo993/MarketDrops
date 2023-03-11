@@ -2,10 +2,7 @@ import Foundation
 import MarketDropsRouting
 import ComposableArchitecture
 
-typealias TabBarStore = Store<TabBar.State, TabBar.Action>
-typealias TabBarViewStore = ViewStore<TabBar.State, TabBar.Action>
-
-enum TabBar {
+struct TabBar: ReducerProtocol {
     struct State: Equatable {
         var selectedTab: TabItem = .ipos
         var ipoCalendar: IPOs.State
@@ -19,41 +16,21 @@ enum TabBar {
         case open(URL)
     }
 
-    struct Environment {
-        let iposDataProvider: IPOs.DataProvider
-        let queue: AnySchedulerOf<DispatchQueue>
-    }
-    
-    static let reducer: Reducer<State, Action, Environment> = .combine(
-        IPOs.reducer.pullback(
-            state: \.ipoCalendar,
-            action: /Action.ipoCalendar,
-            environment: {
-                .init(
-                    dataProvider: $0.iposDataProvider,
-                    queue: $0.queue
-                )
-            }
-        ),
-        Favourites.reducer.pullback(
-            state: \.favourites,
-            action: /Action.favourites,
-            environment: {
-                .init(
-                    dataProvider: .live,
-                    iposDataProvider: $0.iposDataProvider,
-                    queue: $0.queue
-                )
-            }
-        ),
-        .init { state, action, environment in
+    var body: some ReducerProtocol<State, Action> {
+        Scope(state: \.ipoCalendar, action: /Action.ipoCalendar) {
+            IPOs()
+        }
+        Scope(state: \.favourites, action: /Action.favourites) {
+            Favourites()
+        }
+        Reduce { state, action in
             switch action {
             case .favourites:
                 return .none
                 
             case let .ipoCalendar(.didLoad(result)):
-                return Effect(value: .favourites(.latest(result)))
-
+                return EffectTask(value: .favourites(.latest(result)))
+                
             case let .didSelectTab(tab):
                 HapticFeedback.selection.play()
                 state.selectedTab = tab
@@ -63,12 +40,12 @@ enum TabBar {
                 let routeData = RouteData(deeplinkParser: .init(url: url))
                 switch routeData?.path {
                 case let .ipoCalendar(path):
-                    return Effect.merge(
-                        Effect(value: .didSelectTab(.ipos)),
-                        Effect(value: .ipoCalendar(.onNavigate(path)))
+                    return EffectTask.merge(
+                        EffectTask(value: .didSelectTab(.ipos)),
+                        EffectTask(value: .ipoCalendar(.onNavigate(path)))
                     )
                 case .favourites:
-                    return Effect(value: .didSelectTab(.favourites))
+                    return EffectTask(value: .didSelectTab(.favourites))
                 case .unsupported, .none:
                     return .none
                 }
@@ -77,5 +54,5 @@ enum TabBar {
                 return .none
             }
         }
-    )
+    }
 }

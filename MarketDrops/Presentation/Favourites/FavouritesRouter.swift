@@ -4,9 +4,9 @@ import MarketDropsDomain
 import ComposableArchitecture
 
 final class FavouritesRouter {
-    private let store: FavouritesStore
+    private let store: StoreOf<Favourites>
     private var color = Color(UIColor.systemBackground)
-    init(store: FavouritesStore) {
+    init(store: StoreOf<Favourites>) {
         self.store = store
     }
 }

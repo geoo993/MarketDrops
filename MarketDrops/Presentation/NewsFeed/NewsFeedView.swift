@@ -1,9 +1,10 @@
 import SwiftUI
 import MarketDropsDomain
 import MarketDropsCore
+import ComposableArchitecture
 
 struct NewsFeedView: View {
-    @State var viewStore: NewsFeedViewStore
+    @State var viewStore: ViewStoreOf<NewsFeed>
     @State var color: Color
     
     var body: some View {
@@ -43,8 +44,7 @@ struct NewsFeedView: View {
                             CardNewsView(
                                 store: .init(
                                     initialState: .init(),
-                                    reducer: ImageLoading.reducer,
-                                    environment: .init(queue: .main)
+                                    reducer: ImageLoading()
                                 ),
                                 article: article
                             )

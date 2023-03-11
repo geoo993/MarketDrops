@@ -1,9 +1,10 @@
 import SwiftUI
 import MarketDropsDomain
 import MarketDropsDomainFixtures
+import ComposableArchitecture
 
 struct CardNewsView: View {
-    let store: ImageLoadingStore
+    let store: StoreOf<ImageLoading>
     @State var article: CompanyNews.Article
     
     var body: some View {

@@ -4,27 +4,25 @@ import MarketDropsDomain
 import MarketDropsDomainFixtures
 @testable import MarketDrops
 
-@MainActor
 final class FavouritesTests: XCTestCase {
-
-    func test_filterFavourites() async {
+    func test_filterFavourites() {
         let companies: [IPOCalendar.Company] = [.fixture(symbol: "TSLA"), .fixture()]
         let store = makeSut(
             ipoCalendar: .init(newsfeed: .init()),
-            dataProvider: .mock(list: ["TSLA"])
+            repository: .mock(list: ["TSLA"])
         )
-        _ = await store.send(.fetchFavourites)
-        _ = await store.send(.latest(.success(.fixture(companies: companies)))) {
+        store.send(.fetchFavourites)
+        store.send(.latest(.success(.fixture(companies: companies)))) {
             $0.loadedIpos = .loaded(.fixture(companies: companies))
         }
-        _ = await store.send(.fetchFavourites) {
+        store.send(.fetchFavourites) {
             $0.ipoCalendar.calendar = .loaded(.init(companies: [.fixture(symbol: "TSLA")]))
         }
     }
 
-    func test_loadLatestIpoCalendar() async {
+    func test_loadLatestIpoCalendar() {
         let store = makeSut(ipoCalendar: .init(newsfeed: .init()))
-        _ = await store.send(.latest(.success(.fixture()))) {
+        store.send(.latest(.success(.fixture()))) {
             $0.loadedIpos = .loaded(.fixture())
         }
     }
@@ -33,28 +31,24 @@ final class FavouritesTests: XCTestCase {
 extension FavouritesTests {
     private func makeSut(
         ipoCalendar: IPOs.State,
-        dataProvider: Favourites.DataProvider = .mock(),
-        iposDataProvider: IPOs.DataProvider = .mock()
+        repository: FavouritesRepository = .mock()
     ) -> TestStore<
         Favourites.State,
+        Favourites.Action,
         Favourites.State,
         Favourites.Action,
-        Favourites.Action,
-        Favourites.Environment
+        ()
     > {
         .init(
             initialState: .init(ipoCalendar: ipoCalendar),
-            reducer: Favourites.reducer,
-            environment: .init(
-                dataProvider: dataProvider,
-                iposDataProvider: iposDataProvider,
-                queue: DispatchQueue.test.eraseToAnyScheduler()
-            )
-        )
+            reducer: Favourites()
+        ) {
+            $0.favouritesRepository = repository
+        }
     }
 }
 
-extension Favourites.DataProvider {
+extension FavouritesRepository {
     static func mock(
         list: [String] = []
     ) -> Self {

@@ -13,18 +13,7 @@ struct WebView : UIViewRepresentable {
     }
 
     func updateUIView(_ webview: WKWebView, context: Context) {
-        let request = URLRequest(url: self.url, cachePolicy: .returnCacheDataElseLoad)
+        let request = URLRequest(url: self.url)
         webview.load(request)
-    }
-   
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(url: url)
-    }
-    
-    final class Coordinator: NSObject {
-        let url: URL
-        init(url: URL) {
-            self.url = url
-        }
     }
 }

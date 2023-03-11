@@ -3,10 +3,10 @@ import MarketDropsRouting
 import ComposableArchitecture
 
 final class NewsFeedRouter {
-    private let store: NewsFeedStore
+    private let store: StoreOf<NewsFeed>
     private let color = Color(UIColor.systemBackground)
 
-    init(store: NewsFeedStore) {
+    init(store: StoreOf<NewsFeed>) {
         self.store = store
     }
 }

@@ -4,7 +4,7 @@ import MarketDropsRouting
 import ComposableArchitecture
 
 struct IPOCalendarView: View {
-    let store: IPOsStore
+    let store: StoreOf<IPOs>
     @State var color: Color
     @State var emptyStateTitle: String?
 
@@ -53,7 +53,7 @@ struct IPOCalendarView: View {
 }
 
 struct CompanyNavigation: View {
-    let store: IPOsStore
+    let store: StoreOf<IPOs>
     @State var company: IPOCalendar.Company
 
     var body: some View {

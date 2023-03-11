@@ -2,11 +2,11 @@ import SwiftUI
 import ComposableArchitecture
 
 struct TabBarView: View {
-    @ObservedObject var viewStore: TabBarViewStore
+    @ObservedObject var viewStore: ViewStoreOf<TabBar>
     private let tabRoutings: [TabRouting]
 
     init(
-        viewStore: TabBarViewStore,
+        viewStore: ViewStoreOf<TabBar>,
         tabRoutings: [TabRouting]
     ) {
         self.viewStore = viewStore

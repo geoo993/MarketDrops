@@ -3,10 +3,7 @@ import ComposableArchitecture
 import MarketDropsRouting
 import MarketDropsDomain
 
-typealias FavouritesStore = Store<Favourites.State, Favourites.Action>
-typealias FavouritesViewStore = ViewStore<Favourites.State, Favourites.Action>
-
-enum Favourites {
+struct Favourites: ReducerProtocol {
     struct State: Equatable {
         var loadedIpos: Loading<IPOCalendar> = .idle
         var ipoCalendar: IPOs.State
@@ -14,35 +11,24 @@ enum Favourites {
 
     enum Action: Equatable {
         case fetchFavourites
-        case latest(Result<IPOCalendar, IPOs.Error>)
+        case latest(Result<IPOCalendar, LocalisedError>)
         case ipoCalendar(IPOs.Action)
     }
 
-    struct Environment {
-        let dataProvider: DataProvider
-        let iposDataProvider: IPOs.DataProvider
-        let queue: AnySchedulerOf<DispatchQueue>
-    }
+    @Dependency(\.favouritesRepository) var repository: FavouritesRepository
     
-    static let reducer: Reducer<State, Action, Environment> = .combine(
-        IPOs.reducer.pullback(
-            state: \.ipoCalendar,
-            action: /Action.ipoCalendar,
-            environment: {
-                .init(
-                    dataProvider: $0.iposDataProvider,
-                    queue: $0.queue
-                )
-            }
-        ),
-        .init { state, action, environment in
+    var body: some ReducerProtocol<State, Action> {
+        Scope(state: \.ipoCalendar, action: /Action.ipoCalendar) {
+            IPOs()
+        }
+        Reduce { state, action in
             switch action {
             case .ipoCalendar:
                 return .none
                 
             case .fetchFavourites:
                 guard let companies = state.loadedIpos.loaded?.companies else { return .none }
-                let favourites = environment.dataProvider.favouredList()
+                let favourites = self.repository.favouredList()
                 let values = companies.filter { favourites.contains($0.symbol) }
                 state.ipoCalendar.calendar = .loaded(.init(companies: values))
                 return .none
@@ -52,5 +38,5 @@ enum Favourites {
                 return .none
             }
         }
-    )
+    }
 }

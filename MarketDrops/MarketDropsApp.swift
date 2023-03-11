@@ -1,4 +1,5 @@
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct MarketDropsApp: App {
@@ -9,17 +10,13 @@ struct MarketDropsApp: App {
             newsfeed: .init(company: nil)
         )
         router = TabBarRouter(
-            store: .init(
-                initialState: .init(
+            store: Store(
+                initialState: TabBar.State(
                     selectedTab: .ipos,
                     ipoCalendar: state,
                     favourites: .init(ipoCalendar: state)
                 ),
-                reducer: TabBar.reducer,
-                environment: .init(
-                    iposDataProvider: .live,
-                    queue: .main
-                )
+                reducer: TabBar()
             )
         )
     }

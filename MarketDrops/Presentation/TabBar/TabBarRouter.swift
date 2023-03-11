@@ -3,10 +3,10 @@ import MarketDropsRouting
 import ComposableArchitecture
 
 final class TabBarRouter {
-    private let store: TabBarStore
-    @ObservedObject var viewStore: TabBarViewStore
+    private let store: StoreOf<TabBar>
+    @ObservedObject var viewStore: ViewStoreOf<TabBar>
     
-    init(store: TabBarStore) {
+    init(store: StoreOf<TabBar>) {
         self.store = store
         self.viewStore = ViewStore(store)
     }

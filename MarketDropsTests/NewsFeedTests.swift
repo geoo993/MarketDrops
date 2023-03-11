@@ -2,117 +2,124 @@ import XCTest
 import ComposableArchitecture
 import Combine
 import MarketDropsDomain
-import MarketDropsAPIClient
 import MarketDropsDomainFixtures
 @testable import MarketDrops
 
-@MainActor
-final class MarketDropsTests: XCTestCase {
-    private let mainQueue = DispatchQueue.test
-
-    func test_fetchFilingsFailsWithoutSymbol() async {
-        let store = makeSut(company: nil)
-        _ = await store.send(.fetchFilings)
-        await store.receive(.didLoadFilings(.success([])))
+final class NewsFeedTests: XCTestCase {
+    private var mainQueue: TestSchedulerOf<DispatchQueue>!
+    
+    override func setUp() {
+        super.setUp()
+        mainQueue = DispatchQueue.test
     }
     
-    func test_fetchFilingsFails() async {
-        let error = NewsFeed.Error.apiError(.invalidUrl)
+    override func tearDown() {
+        mainQueue = nil
+        super.tearDown()
+    }
+
+    func test_fetchFilingsFailsWithoutSymbol() {
+        let store = makeSut(company: nil)
+        store.send(.fetchFilings)
+        store.receive(.didLoadFilings(.success([])))
+    }
+    
+    func test_fetchFilingsFails() {
+        let error = LocalisedError.apiError(.invalidUrl)
         let store = makeSut(
-            dataProvider: .mock(filings: .failure(error))
+            repository: .mock(filings: .failure(error))
         )
-        _ = await store.send(.fetchFilings) {
+        store.send(.fetchFilings) {
             $0.alert = .none
             $0.filings = .loading(previous: .none)
         }
-        await mainQueue.advance(by: 1)
-        await store.receive(.didLoadFilings(.failure(.apiError(.invalidUrl)))) {
+        mainQueue.advance(by: 1)
+        store.receive(.didLoadFilings(.failure(.apiError(.invalidUrl)))) {
             $0.alert = .errorAlert(error.errorDescription ?? "")
             $0.filings = .error(.init(error))
         }
-        _ = await store.send(.alertDismissed) {
+        store.send(.alertDismissed) {
             $0.alert = .none
         }
     }
     
-    func test_fetchFilingsSucceeds() async {
+    func test_fetchFilingsSucceeds() {
         let store = makeSut()
-        _ = await store.send(.fetchFilings) {
+        store.send(.fetchFilings) {
             $0.alert = .none
             $0.filings = .loading(previous: .none)
         }
-        await mainQueue.advance(by: 1)
-        await store.receive(.didLoadFilings(.success([.fixture()]))) {
+        mainQueue.advance(by: 1)
+        store.receive(.didLoadFilings(.success([.fixture()]))) {
             $0.filings = .loaded([.fixture()])
         }
     }
 
-    func test_fetchNewsFails() async {
-        let error = NewsFeed.Error.apiError(.invalidUrl)
+    func test_fetchNewsFails() {
+        let error = LocalisedError.apiError(.invalidUrl)
         let store = makeSut(
-            dataProvider: .mock(news: .failure(error))
+            repository: .mock(news: .failure(error))
         )
-        _ = await store.send(.fetchNews) {
+        store.send(.fetchNews) {
             $0.alert = .none
             $0.news = .loading(previous: .none)
         }
-        await mainQueue.advance(by: 1)
-        await store.receive(.didLoadNews(.failure(.apiError(.invalidUrl)))) {
+        mainQueue.advance(by: 1)
+        store.receive(.didLoadNews(.failure(.apiError(.invalidUrl)))) {
             $0.alert = .errorAlert(error.errorDescription ?? "")
             $0.news = .error(.init(error))
         }
-        _ = await store.send(.alertDismissed) {
+        store.send(.alertDismissed) {
             $0.alert = .none
         }
     }
     
-    func test_fetchNewsSucceeds() async {
+    func test_fetchNewsSucceeds() {
         let store = makeSut()
-        _ = await store.send(.fetchNews) {
+        store.send(.fetchNews) {
             $0.alert = .none
             $0.news = .loading(previous: .none)
         }
-        await mainQueue.advance(by: 1)
-        await store.receive(.didLoadNews(.success(.fixture()))) {
+        mainQueue.advance(by: 1)
+        store.receive(.didLoadNews(.success(.fixture()))) {
             $0.news = .loaded(.fixture())
         }
     }
     
-    func test_didTapFavourite() async {
+    func test_didTapFavourite() {
         let store = makeSut()
-        _ = await store.send(.didTapFavourite) {
+        store.send(.didTapFavourite) {
             $0.isFavoured = true
         }
     }
 }
 
-extension MarketDropsTests {
+extension NewsFeedTests {
     private func makeSut(
         company: IPOCalendar.Company? = .fixture(),
         isFavoured: Bool = false,
-        dataProvider: NewsFeed.DataProvider = .mock()
+        repository: NewsFeedRepository = .mock()
     ) -> TestStore<
         NewsFeed.State,
+        NewsFeed.Action,
         NewsFeed.State,
         NewsFeed.Action,
-        NewsFeed.Action,
-        NewsFeed.Environment
+        ()
     > {
         .init(
             initialState: .init(company: company, isFavoured: isFavoured),
-            reducer: NewsFeed.reducer,
-            environment: .init(
-                dataProvider: dataProvider,
-                queue: mainQueue.eraseToAnyScheduler()
-            )
-        )
+            reducer: NewsFeed()
+        ) {
+            $0.newsFeedRepository = repository
+            $0.mainQueue = self.mainQueue.eraseToAnyScheduler()
+        }
     }
 }
 
-extension NewsFeed.DataProvider {
+extension NewsFeedRepository {
     static func mock(
-        filings: Result<[CompanyFiling], NewsFeed.Error> = .success([.fixture()]),
-        news: Result<CompanyNews, NewsFeed.Error> = .success(.fixture()),
+        filings: Result<[CompanyFiling], LocalisedError> = .success([.fixture()]),
+        news: Result<CompanyNews, LocalisedError> = .success(.fixture()),
         isFavoured: Bool = false
     ) -> Self {
         .init(

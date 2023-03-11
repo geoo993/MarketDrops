@@ -2,10 +2,10 @@ import SwiftUI
 import ComposableArchitecture
 
 struct ImageView: View {
-    private let store: ImageLoadingStore
+    private let store: StoreOf<ImageLoading>
     private let imageUrl: URL
 
-    init(store: ImageLoadingStore, imageUrl: URL) {
+    init(store: StoreOf<ImageLoading>, imageUrl: URL) {
         self.store = store
         self.imageUrl = imageUrl
     }
@@ -25,7 +25,7 @@ struct ImageView: View {
         }
     }
 
-    @ViewBuilder private func idleView(_ viewStore: ImageLoadingViewStore) -> some View {
+    @ViewBuilder private func idleView(_ viewStore: ViewStoreOf<ImageLoading>) -> some View {
         Text("").onAppear {
             viewStore.send(.fetchImage(imageUrl))
         }

@@ -1,9 +1,11 @@
 import XCTest
+import Combine
 @testable import MarketDropsAPIClient
 
-final class FetchCompanyNewsRequestTests: XCCombineTestCase {
-    var apiClient: MarketDropsAPIClient!
-    var session: MockHTTPSession!
+final class FetchCompanyNewsRequestTests: XCTestCase {
+    private var apiClient: MarketDropsAPIClient!
+    private var session: MockHTTPSession!
+    private var cancellables = Set<AnyCancellable>()
         
     override func setUp() {
         super.setUp()

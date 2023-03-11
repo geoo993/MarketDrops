@@ -5,10 +5,10 @@ import MarketDropsDomain
 import ComposableArchitecture
 
 final class IpoCalendarRouter: ObservableObject {
-    private let store: IPOsStore
+    private let store: StoreOf<IPOs>
     private var color = Color(UIColor.systemBackground)
 
-    init(store: IPOsStore) {
+    init(store: StoreOf<IPOs>) {
         self.store = store
     }
 }

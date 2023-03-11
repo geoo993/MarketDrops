@@ -1,10 +1,12 @@
 import XCTest
+import Combine
 @testable import MarketDropsAPIClient
 
-final class ImageLoaderTests: XCCombineTestCase {
-    var session: MockHTTPSession!
-    var imageCache: MockImageCache!
-    var imageLoader: ImageLoader!
+final class ImageLoaderTests: XCTestCase {
+    private var session: MockHTTPSession!
+    private var imageCache: MockImageCache!
+    private var imageLoader: ImageLoader!
+    private var cancellables = Set<AnyCancellable>()
         
     override func setUp() {
         super.setUp()
